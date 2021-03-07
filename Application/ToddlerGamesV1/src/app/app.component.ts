@@ -7,10 +7,7 @@ import { SwUpdate } from '@angular/service-worker';
 })
 export class AppComponent {
   title = 'Toddler Games v0.1';
-  outlineEnable:boolean =true;
-  onButtonTap(): void {
-    console.log("Button was pressed");
-}
+  
 
   constructor(updates: SwUpdate){
     updates.available.subscribe(event=> {

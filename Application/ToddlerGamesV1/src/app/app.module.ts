@@ -9,12 +9,14 @@ import {A11yModule} from '@angular/cdk/a11y';
 import { Game1Component } from './game1/game1.component';
 import { Game2Component } from './game2/game2.component';
 import { Game3Component } from './game3/game3.component';
+import { HomepageComponent } from './homepage/homepage.component';
 @NgModule({
   declarations: [
     AppComponent,
     Game1Component,
     Game2Component,
-    Game3Component
+    Game3Component,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
