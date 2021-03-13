@@ -10,6 +10,7 @@ import { Game1Component } from './game1/game1.component';
 import { Game2Component } from './game2/game2.component';
 import { Game3Component } from './game3/game3.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     AppRoutingModule,
     A11yModule,
     MDBBootstrapModule.forRoot(),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent],

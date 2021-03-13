@@ -1,25 +1,33 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Game1Component } from './game1.component';
+  import { async } from '@angular/core/testing';
 
 describe('Game1Component', () => {
-  let component: Game1Component;
-  let fixture: ComponentFixture<Game1Component>;
+    beforeEach(async(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          AppComponent
+        ],
+      }).compileComponents();
+    }));
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ Game1Component ]
-    })
-    .compileComponents();
-  });
+    it('should create the app', () => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.debugElement.componentInstance;
+      expect(app).toBeTruthy();
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(Game1Component);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    it(`should have as title 'dragdrop'`, () => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.debugElement.componentInstance;
+      expect(app.title).toEqual('dragdrop');
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    it('should render title in a h1 tag', () => {
+      const fixture = TestBed.createComponent(AppComponent);
+      fixture.detectChanges();
+      const compiled = fixture.debugElement.nativeElement;
+      expect(compiled.querySelector('h1').textContent).toContain('Welcome to dragdrop!');
+    });
   });
-});
