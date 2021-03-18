@@ -11,6 +11,8 @@ import { Game2Component } from './game2/game2.component';
 import { Game3Component } from './game3/game3.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +22,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     HomepageComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     A11yModule,
