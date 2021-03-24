@@ -13,6 +13,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './profile/profile.component';
+import { SVGService } from './game1/svg.service';
+import { DraggableDirective } from './game1/draggable.directive';
+import { DroppableDirective } from './game1/droppable.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { ProfileComponent } from './profile/profile.component';
     Game2Component,
     Game3Component,
     HomepageComponent,
-    ProfileComponent
+    ProfileComponent,
+    DraggableDirective,
+    DroppableDirective
   ],
   imports: [
     BrowserAnimationsModule,
@@ -32,7 +37,7 @@ import { ProfileComponent } from './profile/profile.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     DragDropModule
   ],
-  providers: [],
+  providers: [SVGService],
   bootstrap: [AppComponent],
   schemas: [
     NO_ERRORS_SCHEMA

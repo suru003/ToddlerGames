@@ -33,14 +33,15 @@
     <GridLayout>
       <ScrollView>
           <StackLayout class="home-panel">
-              <!--Add your page content here-->
-              <!-- <Button class= "homescreen_buttons" (tap)="onButtonTap()" (click)="onButtonTap()">Game 1</Button><br>
-              <Button class= "homescreen_buttons" (tap)="onButtonTap()" (click)="onButtonTap()">Game 2</Button><br>
-              <Button class= "homescreen_buttons" (tap)="onButtonTap()" (click)="onButtonTap()">Game 3</Button><br> -->
-              <br>
-              <button mdbBtn type="button" color="primary" [outline]='outlineEnable' mdbWavesEffect><a routerLink="app-game1">Drag and Drop Shapes</a></button><br><br>
-              <button mdbBtn type="button" color="default" [outline]='outlineEnable' mdbWavesEffect><a routerLink="app-game2">Game 2</a></button><br><br>
-              <button mdbBtn type="button" color="warning" [outline]='outlineEnable' mdbWavesEffect><a routerLink="app-game3">Stack the Bricks</a></button><br><br>
+
+            <br><br>
+            <button mdbBtn type="button" color="primary" [outline]=true mdbWavesEffect><a routerLink="app-homepage">Easy</a></button>
+            <button mdbBtn type="button" color="default" [outline]=true mdbWavesEffect><a routerLink="app-homepage">Medium</a></button>
+            <button mdbBtn type="button" color="warning" [outline]=true mdbWavesEffect><a routerLink="app-homepage">Hard</a></button>
+            <br><br>
+              <button mdbBtn type="button" color="primary" [outline]='outlineEnable' mdbWavesEffect><a routerLink="app-game1">Drag and Drop</a></button><br><br>
+              <button mdbBtn type="button" color="default" [outline]='outlineEnable' mdbWavesEffect><a routerLink="app-game2">Tap 'n' Pop</a></button><br><br>
+              <button mdbBtn type="button" color="warning" [outline]='outlineEnable' mdbWavesEffect><a routerLink="app-game3">Stack the Brick</a></button><br><br>
 
           </StackLayout>
       </ScrollView>

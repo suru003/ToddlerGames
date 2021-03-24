@@ -24,8 +24,10 @@
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictInputAccessModifiers": false,
+    "strictTemplates": true,
+    "strictPropertyInitialization": false
+
   },
   "include": ["../ToddlerGamesV1/node_modules/angular-bootstrap-md/**/*.ts", "../node_modules/angular-bootstrap-md/index.ts",  "**/*.ts"]    // added for bootstrap
 }
