@@ -26,7 +26,6 @@ import {
   styleUrls: ['./game3.component.scss']
 })
 
-
 export class Game3Component{
   top_items = ["../../assets/game3/arrow.png","../../assets/game3/brick1.png"]
   private mouseMoveSubscription: Subscription;
@@ -101,7 +100,7 @@ export class Game3Component{
         const x = domRect.x;
         const y = domRect.y;
         
-        return [e.clientX-x,e.clientY-y];
+        return [e.pageX-(window.innerWidth/2),e.pageY];
     }
     return [];
   }

@@ -1,7 +1,10 @@
   <!-- Toolbar -->
   <div class="toolbar" role="banner">
-    <span>Welcome</span>
+    <span style="margin-left: 5%;">Welcome</span>
       <div class="spacer"></div>
+    <span style="margin-right: 5%; padding: 2px 2px 2px 2px;">
+      <button><a routerLink="app-profile">Profile</a></button><br>
+    </span>  
   </div>
 
   <div class="content" role="main">
@@ -37,7 +40,7 @@
               <br>
               <button mdbBtn type="button" color="primary" [outline]='outlineEnable' mdbWavesEffect><a routerLink="app-game1">Drag and Drop Shapes</a></button><br><br>
               <button mdbBtn type="button" color="default" [outline]='outlineEnable' mdbWavesEffect><a routerLink="app-game2">Game 2</a></button><br><br>
-              <button mdbBtn type="button" color="warning" [outline]='outlineEnable' mdbWavesEffect><a routerLink="app-game3">Game 3</a></button><br><br>
+              <button mdbBtn type="button" color="warning" [outline]='outlineEnable' mdbWavesEffect><a routerLink="app-game3">Stack the Bricks</a></button><br><br>
 
           </StackLayout>
       </ScrollView>
