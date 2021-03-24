@@ -10,6 +10,7 @@ export class DraggableDirective {
 
   @HostListener('dragstart', ['$event'])
   onDragStart(event:any) {
+    console.log('on drag start');
     const elementToBeDragged = event.target.getElementsByTagName('circle')[0];
     event.dataTransfer.setData('text', elementToBeDragged.id);
   }

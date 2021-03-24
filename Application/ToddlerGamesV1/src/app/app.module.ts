@@ -22,7 +22,9 @@ import { DroppableDirective } from './game1/droppable.directive';
     Game1Component,
     Game2Component,
     Game3Component,
-    HomepageComponent
+    HomepageComponent,
+    DraggableDirective,
+    DroppableDirective
   ],
   imports: [
     BrowserAnimationsModule,

@@ -1,51 +1,48 @@
-<div class="items-container">
+<div class="items-container" appDroppable>
   <div appDraggable>
     <svg height="100" width="100">
-      <polygon id="hexagon"  points="50 3,100 28,100 75, 50 100,3 75,3 25" stroke="black" fill="blue"/>
+      <polygon id="hexagon1" type="hexagon" draggable="false"  points="50 3,100 28,100 75, 50 100,3 75,3 25" stroke="black" fill="blue"/>
     </svg>
   </div>
   <div appDraggable>
     <svg height="100" width="100">
-      <rect id="rectangle" width="100" height="100" stroke="black" fill="#ADD8E6" />
+      <rect id="rectangle1" type="rectangle" draggable="false" width="100" height="100" stroke="black" fill="#ADD8E6" />
     </svg>
   </div>
   <div appDraggable>
     <svg height="100" width="100">
-      <polygon id="triangle"  points="50,0 100,100 0,100" stroke="black" fill="red"/>
+      <polygon id="triangle1" type="triangle" draggable="false" points="50,0 100,100 0,100" stroke="black" fill="red"/>
     </svg>
   </div>
   <div appDraggable>
     <svg height="100" width="100">
-      <circle id="circle" cx="50" cy="50" r="40" stroke="black" fill="green" />
+      <circle id="circle1" type="circle" draggable="false" cx="50" cy="50" r="40" stroke="black" fill="green" />
     </svg>
   </div>
   <div appDraggable>
     <svg height="100" width="100">
-      <rect id="square" width="100" height="100" stroke="black" fill="black" />
+      <rect id="square1" type="square" draggable="false" width="100" height="100" stroke="black" fill="black" />
     </svg>
   </div>
 
 
 </div>
-<div class="dropzone-container" style="width: 1300px; height: 500px">
-<!--  <svg id="dropzone" style="display: inline; width: inherit; min-width: inherit; max-width: inherit; height: inherit; min-height: inherit; max-height: inherit;" version="1.1">-->
-<!--    <circle id="circle-red" cx="50" cy="50" r="40" stroke="black" fill="green" />-->
-<!--  </svg>-->
-  <svg id="dropzone" cdkDrag>
-    <circle id="circle" cx="50" cy="50" r="40" stroke="black" fill="green" />
+<div class="dropzone-container" style="width: 1300px; height: 500px" appDroppable>
+  <svg height="100" width="100" cdkDrag>
+    <circle id="circle2" type="circle" draggable="true" cx="50" cy="50" r="40" stroke="black" fill="green"/>
   </svg>
 
   <svg height="100" width="100" cdkDrag>
-    <rect id="square" width="100" height="100" stroke="black" fill="black" />
+    <rect id="square2" type="square" draggable="true" width="100" height="100" stroke="black" fill="black" />
   </svg>
   <svg height="100" width="100" cdkDrag>
-    <polygon id="triangle"  points="50,0 100,100 0,100" stroke="black" fill="red"/>
+    <polygon id="triangle2" type="triangle" draggable="true"  points="50,0 100,100 0,100" stroke="black" fill="red"/>
   </svg>
   <svg height="100" width="100" cdkDrag>
-    <rect id="rectangle" width="100" height="100" stroke="black" fill="#ADD8E6" />
+    <rect id="rectangle2" type="rectangle" draggable="true"  width="100" height="100" stroke="black" fill="#ADD8E6" />
   </svg>
   <svg height="100" width="100" cdkDrag>
-    <polygon id="hexagon"  points="50 3,100 28,100 75, 50 100,3 75,3 25" stroke="black" fill="blue"/>
+    <polygon id="hexagon2" type="hexagon" draggable="true"   points="50 3,100 28,100 75, 50 100,3 75,3 25" stroke="black" fill="blue"/>
   </svg>
 </div>
 
