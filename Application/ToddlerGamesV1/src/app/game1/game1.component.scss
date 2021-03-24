@@ -81,3 +81,21 @@ a {
   text-decoration: none;
   color: dodgerblue;
 }
+
+app-root {
+    display: flex;
+}
+
+.items-container {
+    width: 30%;
+
+    circle {
+        cursor: move;
+    }
+}
+
+.dropzone-container {
+    border: 3px dashed #000;
+    background-color: #CCC;
+    width: 70%;
+}

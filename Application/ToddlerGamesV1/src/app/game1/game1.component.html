@@ -1,26 +1,53 @@
-<div class="container">
-  <h1>{{title}}</h1>
-  <h2>Movies</h2>
-  <div class="list-container"
-    cdkDropList
-    #moviesList="cdkDropList"
-    [cdkDropListData]="MoviesList"
-    [cdkDropListConnectedTo]="[doneMovieList]"
-    class="movie-list"
-    (cdkDropListDropped)="onDrop($event)">
-    <div class="movie-block" *ngFor="let moviesList of MoviesList" cdkDrag>{{moviesList}}</div>
+<div class="items-container">
+  <div appDraggable>
+    <svg height="100" width="100">
+      <circle id="circle-red" cx="50" cy="50" r="40" stroke="black" fill="red" />
+    </svg>
   </div>
+  <div appDraggable>
+    <svg height="100" width="100">
+      <circle id="circle-blue" cx="50" cy="50" r="40" stroke="black" fill="blue" />
+    </svg>
+  </div>
+  <div appDraggable>
+    <svg height="100" width="100">
+      <circle id="circle-green" cx="50" cy="50" r="40" stroke="black" fill="green" />
+    </svg>
+  </div>
+</div>
+<div class="dropzone-container" style="width: 800px; height: 800px" appDroppable>
+  <svg id="dropzone" xmlns="http://www.w3.org/2000/svg" style="display: inline; width: inherit; min-width: inherit; max-width: inherit; height: inherit; min-height: inherit; max-height: inherit;" version="1.1">
+    <circle id="circle-green" cx="50" cy="50" r="40" stroke="black" fill="green" />
+  </svg>
 </div>
 
-<div class="container">
-  <h2>Movies Watched</h2>
-  <div class="list-container"
-    cdkDropList
-    #doneMovieList="cdkDropList"
-    [cdkDropListData]="MoviesWatched"
-    [cdkDropListConnectedTo]="[moviesList]"
-    class="movie-list"
-    (cdkDropListDropped)="onDrop($event)">
-    <div class="movie-block" *ngFor="let moviesWatched of MoviesWatched" cdkDrag>{{moviesWatched}}</div>
-  </div>
-</div>
+<!--<div class="container">-->
+<!--  <h1>{{title}}</h1>-->
+<!--  <h2>Movies</h2>-->
+<!--  <div-->
+<!--    cdkDropList-->
+<!--    #moviesList="cdkDropList"-->
+<!--    [cdkDropListData]="MoviesList"-->
+<!--    [cdkDropListConnectedTo]="[doneMovieList]"-->
+<!--    class="movie-list"-->
+<!--    (cdkDropListDropped)="onDrop($event)">-->
+<!--    <div cdkDrag style="width:500px;height:100px;border:1px solid #000;background-color:grey;"></div>-->
+<!--    <div cdkDrag style="width:500px;height:100px;border:1px solid #000;background-color:blue;"></div>-->
+<!--    <div class="movie-block" *ngFor="let moviesList of MoviesList" cdkDrag>{{moviesList}}</div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="container">-->
+<!--  <h2>Movies Watched</h2>-->
+<!--  <div-->
+<!--    cdkDropList-->
+<!--    #doneMovieList="cdkDropList"-->
+<!--    [cdkDropListData]="MoviesWatched"-->
+<!--    [cdkDropListConnectedTo]="[moviesList]"-->
+<!--    class="movie-list"-->
+<!--    (cdkDropListDropped)="onDrop($event)">-->
+<!--    <div cdkDrag style="width:500px;height:100px;border:1px solid #000;background-color:green;"></div>-->
+<!--    <div cdkDrag style="width:500px;height:100px;border:1px solid #000;background-color:red;"></div>-->
+<!--    <div class="movie-block" *ngFor="let moviesWatched of MoviesWatched" cdkDrag>{{moviesWatched}}</div>-->
+<!--  </div>-->
+<!--</div>-->
