@@ -15,7 +15,7 @@ export class Game1Component implements OnInit {
   }
 
   ngOnInit(): void {
-    this.svgService.initializePanZoom();
+//     this.svgService.initializePanZoom();
   }
 }
 //

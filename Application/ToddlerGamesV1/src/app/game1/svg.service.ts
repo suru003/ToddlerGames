@@ -9,15 +9,15 @@ export class SVGService {
 
   constructor() {}
 
-  initializePanZoom() {
-    this.panZoomInstance = svgPanZoom('#dropzone', {
-//       zoomEnabled: true,
-      controlIconsEnabled: true,
-      fit: false,
-      center: true,
-//       minZoom: 0.1
-    });
-  }
+//   initializePanZoom() {
+//     this.panZoomInstance = svgPanZoom('#dropzone', {
+// //       zoomEnabled: true,
+//       controlIconsEnabled: true,
+//       fit: false,
+//       center: true,
+// //       minZoom: 0.1
+//     });
+//   }
 
   getSVGPoint(event:any, element:any): SVGPoint {
     // get the mouse coordinates and set them to the SVG point

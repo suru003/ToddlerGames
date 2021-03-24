@@ -27,15 +27,25 @@
 
 
 </div>
-<div class="dropzone-container" style="width: 500px; height: 500px">
+<div class="dropzone-container" style="width: 1300px; height: 500px">
 <!--  <svg id="dropzone" style="display: inline; width: inherit; min-width: inherit; max-width: inherit; height: inherit; min-height: inherit; max-height: inherit;" version="1.1">-->
 <!--    <circle id="circle-red" cx="50" cy="50" r="40" stroke="black" fill="green" />-->
 <!--  </svg>-->
-  <svg id="dropzone">
-    <circle id="circle1" cx="50" cy="50" r="40" stroke="black" fill="green" />
+  <svg id="dropzone" cdkDrag>
+    <circle id="circle" cx="50" cy="50" r="40" stroke="black" fill="green" />
   </svg>
-  <svg id="dropzone">
-    <circle id="circle2" cx="50" cy="50" r="40" stroke="black" fill="green" />
+
+  <svg height="100" width="100" cdkDrag>
+    <rect id="square" width="100" height="100" stroke="black" fill="black" />
+  </svg>
+  <svg height="100" width="100" cdkDrag>
+    <polygon id="triangle"  points="50,0 100,100 0,100" stroke="black" fill="red"/>
+  </svg>
+  <svg height="100" width="100" cdkDrag>
+    <rect id="rectangle" width="100" height="100" stroke="black" fill="#ADD8E6" />
+  </svg>
+  <svg height="100" width="100" cdkDrag>
+    <polygon id="hexagon"  points="50 3,100 28,100 75, 50 100,3 75,3 25" stroke="black" fill="blue"/>
   </svg>
 </div>
 
