@@ -11,11 +11,11 @@ export class SVGService {
 
   initializePanZoom() {
     this.panZoomInstance = svgPanZoom('#dropzone', {
-      zoomEnabled: true,
+//       zoomEnabled: true,
       controlIconsEnabled: true,
       fit: false,
       center: true,
-      minZoom: 0.1
+//       minZoom: 0.1
     });
   }
 
