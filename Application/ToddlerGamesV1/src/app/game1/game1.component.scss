@@ -89,7 +89,7 @@ app-root {
 .items-container {
     display: flex;
     border: 3px dashed #000;
-    width: 70%;
+    width: 100%;
     justify-content: space-between;
 }
 
@@ -98,6 +98,8 @@ app-root {
     border: 3px dashed #000;
     width: 100%;
     justify-content: space-between;
+    left: 100px;top: 150px;
+    padding: 200px;
 }
 
   .svg-triangle polygon {
