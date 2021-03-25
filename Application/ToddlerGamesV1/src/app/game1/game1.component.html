@@ -7,22 +7,22 @@
     <button style="position: absolute;right: 20px;top: 20px;" type="button" class="btn btn-primary" onClick="window.location.reload();">Reset</button>
 </div>
 
+
+<br>
 <h1 style="text-align:center">{{title}}</h1>
+
 <div class="cssmarquee">
   <h1>Drag the shapes on the bottom to match them to the shapes on top </h1>
 </div>
 
-<br>
-
-
-
 <div class="score-div">
   <div id="score" style="float:right;"><h1><b>Score:0/100</b></h1></div>
-  <div id="wrong" style="display:none; "><b><h2 style="color:red;text-align:center;">WRONG!</h2></b></div>
+  <div id="wrong" style="display:none;text-align:center;"><h2 style="color:red;"><b>WRONG!</b></h2></div>
 </div>
 
 
-
+<br>
+<br>
 
 <div class="items-container" appDroppable>
   <div appDraggable>
@@ -57,6 +57,7 @@
 <hr>
 
 <div class="dropzone-container" style="width: 1300px; height: 500px" appDroppable>
+
   <svg height="100" width="100" cdkDrag>
     <circle id="circle2" type="circle" draggable="true" cx="50" cy="50" r="40" stroke="black" fill="green"/>
   </svg>

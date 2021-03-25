@@ -99,8 +99,8 @@ app-root {
 //     border: 3px dashed #000;
     width: 100%;
     justify-content: space-between;
-    left: 100px;top: 150px;
-    padding: 150px;
+//     left: 100px;top: 150px;
+//     padding: 150px;
 }
 
   .svg-triangle polygon {
@@ -187,4 +187,9 @@ width:100%;
 
 .score-div{
 
+}
+
+.drag-location{
+  height: 5px;
+  background-color: #4d4dff
 }
