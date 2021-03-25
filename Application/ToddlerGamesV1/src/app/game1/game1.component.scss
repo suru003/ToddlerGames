@@ -91,6 +91,7 @@ app-root {
 //     border: 3px dashed #000;
     width: 100%;
     justify-content: space-between;
+    padding: 20px;
 }
 
 .dropzone-container {
@@ -137,14 +138,48 @@ a:hover {
   color: white;
 }
 
-.round {
-  border-radius: 100%;
-}
 
 hr{
  width: 100%;
-        height: 10px;
-        margin-left: auto;
-        margin-right: auto;
-        background-color: #b7d0e2;
+ height: 3px;
+ margin-left: auto;
+ margin-right: auto;
+ background-color: black;
+}
+
+
+.cssmarquee {
+height: 50px;
+overflow: hidden;
+position: relative;
+}
+.cssmarquee h1 {
+font-size: 2em;
+color: #808080	;
+position: absolute;
+width: 100%;
+height: 100%;
+margin: 0;
+line-height: 50px;
+text-align: center;
+transform:translateX(100%);
+animation: cssmarquee 17s linear infinite;
+}
+@keyframes cssmarquee {
+0% {
+transform: translateX(100%);
+}
+100% {
+transform: translateX(-100%);
+}
+}
+
+.inner
+{
+    display: inline-block;
+}
+
+table{
+overflow: auto;
+width:100%;
 }
