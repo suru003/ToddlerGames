@@ -8,6 +8,8 @@ export class DroppableDirective {
   private draggingElement: any;
   private score = 0;
   private svgPoint: any;
+  private mouseDownPoint_x: any;
+  private mouseDownPoint_y: any;
 
   constructor(private svgService: SVGService) {
   }
@@ -41,7 +43,11 @@ export class DroppableDirective {
       console.log('draggable element: ' + event.target);
       this.draggingElement = event.target;
       this.svgPoint = this.svgService.getSVGPoint(event, this.draggingElement);
+
       console.log('mouse down point: ' + this.svgPoint.x + ", " + this.svgPoint.y);
+      console.log('mouse down point1: ' + event.x + ", " + event.y);
+      this.mouseDownPoint_x = event.x;
+      this.mouseDownPoint_y = event.y;
     }
   }
 
@@ -51,7 +57,7 @@ export class DroppableDirective {
 
     var AABB = {
       collide: function (el1:any, el2:any) {
-        if (el1 == null || el2 == null) {
+        if (el1 == null || el2 == null || el1.getAttribute("id") == el2.getAttribute("id")) {
           return false;
         }
         var rect1 = el1.getBoundingClientRect();
@@ -98,7 +104,12 @@ export class DroppableDirective {
       document.getElementById("wrong")!.style.display = "none";
     } else {
       document.getElementById("wrong")!.style.display = "";
-      this.setPosition(this.draggingElement, { x: this.svgPoint.x, y: this.svgPoint.y  });
+      if (this.draggingElement != null) {
+//         this.draggingElement.style.position = "absolute";
+//         this.setPosition(this.draggingElement, { x: this.mouseDownPoint_x, y: this.mouseDownPoint_y  });
+      } else {
+        console.log("Dragging point is null");
+      }
     }
 
     this.draggingElement = null;
@@ -106,6 +117,7 @@ export class DroppableDirective {
 
   @HostListener('mouseleave', ['$event'])
   onMouseLeave(event:any): void {
+    console.log("mouse leave");
     this.draggingElement = null;
   }
 
