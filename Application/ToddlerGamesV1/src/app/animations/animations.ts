@@ -6,13 +6,19 @@ export function followAnimation(rot: number): AnimationMetadata {
   ));
 }; 
 
-export function brickFallAnimation(cord: number[]): AnimationMetadata {
-    return query('.brick', animate('100ms',
+export function brickSlideAnimation(cord: number[], brickNumber:number): AnimationMetadata {
+    return query('.brick'+brickNumber, animate('100ms',
         style({ transform: 'translateX(' + cord[0] + 'px)' })
     //   style({ transform: 'translate(' + cord[0] + 'px, ' + cord[1] + 'px)' })
     ));
   }; 
 
+export function brickFallDownAnimation(cord_x: number, cord_y: number, brickNumber: number): AnimationMetadata {
+    return query('.brick'+brickNumber, animate(cord_y+'ms',
+        style({ transform: 'translate('+cord_x+'px, ' + cord_y + 'px)' })
+    //   style({ transform: 'translate(' + cord[0] + 'px, ' + cord[1] + 'px)' })
+    ));
+  }; 
 export const heartsAnimation: AnimationMetadata[] = [
   query('.eye-iris',
     animate('300ms ease-out', keyframes([

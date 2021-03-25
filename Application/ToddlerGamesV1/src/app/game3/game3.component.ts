@@ -1,22 +1,10 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef,Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { AnimationBuilder, AnimationMetadata, AnimationPlayer } from '@angular/animations';
 import { NextObserver,Subscription, fromEvent } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
-import { brickFallAnimation, followAnimation, heartsAnimation } from '../animations/animations';
+import { brickSlideAnimation, brickFallDownAnimation, followAnimation, heartsAnimation } from '../animations/animations';
 
-import {
-  trigger,
-  state,
-  query,
-  group,
-  style,
-  animation,
-  stagger,
-  useAnimation,
-  keyframes,
-  animate,
-  transition
-} from '@angular/animations';
+
 
 
 
@@ -27,53 +15,67 @@ import {
 })
 
 export class Game3Component{
+  // Image paths for the arrow and bricks
   top_items = ["../../assets/game3/arrow.png","../../assets/game3/brick1.png"]
   private mouseMoveSubscription: Subscription;
   private clickSubscription: Subscription;
+  private scrollSubscription: Subscription;
+  private stackedBricks;
+  private el:Element;
 
   @ViewChild('animationElement') 
   public animationElement: ElementRef = ViewChild('animationElement');
-  public hangingBrick: ElementRef = ViewChild('hangingBrick');
-  constructor(private builder: AnimationBuilder) {
-    this.mouseMoveSubscription=new Subscription;
-    this.clickSubscription=new Subscription;
-  }
-
-  // ngOnInit(): void {
-  // }
   
+  constructor(private builder: AnimationBuilder, private renderer: Renderer2) {
+    // for eyes tracking
+    this.mouseMoveSubscription=new Subscription;
+    // for click event
+    this.clickSubscription=new Subscription;
+    // for scroll event
+    this.scrollSubscription=new Subscription;
+    
+    // currently stacked bricks
+    this.stackedBricks = 0;
+    
+    // intializing animationElement
+    this.el = this.animationElement.nativeElement;
+  }
   
   public ngAfterViewInit(): void {
-    const el = this.animationElement.nativeElement;
+    this.el = this.animationElement.nativeElement;
+
+    
     this.mouseMoveSubscription = fromEvent(document, 'mousemove')
       .pipe(throttleTime(50))
       .subscribe(e => {
         if(e instanceof MouseEvent){
-          this.rotateEyes(e, el);
-          // this.followTopItems(e, el);
+          this.rotateEyes(e, this.el);
+          this.followTopItems(e, this.el);
         }
     });
     const page = document.querySelector('.page');
     console.log("button "+page)
     if(page!=null){
-      this.clickSubscription = fromEvent(page, 'click')
-        .pipe(throttleTime(300))
-        .subscribe(e => {
-          if(e instanceof MouseEvent){
-            this.rotateEyes(e, el);
-            this.followTopItems(e, el);
-          }
-      });
+      // this.clickSubscription = fromEvent(page, 'click')
+      //   .pipe(throttleTime(300))
+      //   .subscribe(e => {
+      //     if(e instanceof MouseEvent){
+      //       this.followTopItems(e, this.el);
+      //     }
+      // });
+    
+      this.scrollSubscription = fromEvent(page, 'click')
+      .pipe(throttleTime(1000))
+      .subscribe(e => {
+        console.log("wheel event");
+        if(e instanceof MouseEvent){
+          this.releaseBrick(this.el);
+        }
+      })
     }
   }
 
 
-  
-  private onClick(e: MouseEvent, el: Element): void {
-    // const player = this.playerFor(el, heartsAnimation);
-    // player.play();
-    console.log("clicked element "+el+" MouseEvent "+e)
-  }
 
   private rotateEyes(e: MouseEvent, el: Element): void {
     const rotDegree = this.calculateRotDegree(e, el);
@@ -84,8 +86,21 @@ export class Game3Component{
   private followTopItems(e: MouseEvent, el: Element): void {
     const cord = this.calculateMovement(e, el);
     console.log("cord = "+cord)
-    const player = this.playerFor(el, brickFallAnimation(cord));
+    const player = this.playerFor(el, brickSlideAnimation(cord, this.stackedBricks));
     player.play();
+  }
+
+  private releaseBrick(el: Element): void {
+    const hangingBrick = document.querySelector('.brick'+this.stackedBricks);
+    if(hangingBrick!=null){
+      const cord_x = hangingBrick.getBoundingClientRect().x - (window.innerWidth/2);
+    
+      const cord_y = window.innerHeight-(this.stackedBricks*20)-150;
+      console.log("cords = "+cord_x+","+cord_y+" tried "+window.pageXOffset)
+      const player = this.playerFor(el, brickFallDownAnimation(cord_x, cord_y, this.stackedBricks));
+      player.play();
+      this.stackedBricks+=1;
+    }
   }
 
   private playerFor(el: Element, animation: AnimationMetadata|AnimationMetadata[]): AnimationPlayer {
@@ -93,7 +108,7 @@ export class Game3Component{
     return factory.create(el);
   }
   private calculateMovement(e: MouseEvent, el: Element): number[] {
-    const hangingBrick = document.querySelector('.brick');
+    const hangingBrick = document.querySelector('.brick'+this.stackedBricks);
     if(hangingBrick!=null){
         const domRect = hangingBrick.getBoundingClientRect();
         console.log("box ="+domRect.x+","+domRect.y)
