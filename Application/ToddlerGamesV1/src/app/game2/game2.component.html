@@ -2,21 +2,28 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <button mdbBtn type="button" color="primary" [outline]=true mdbWavesEffect><a
-                        routerLink="app-homepage">Back</a></button>
-            </div>
-            <div class="col-lg">
-                <h1 class="help" data-text="🎈">
-                    🎈Type the letter you see in the balloon.
-                </h1>
+                <button mdbBtn type="button" color="primary" [outline]=true mdbWavesEffect><a href="#"> < Back</a></button>
             </div>
             <div class="col-sm">
+                <h3 class="help" >
+                    🎈Type the letter you see in the balloon.
+                    <div id="score" ><b>Score:{{score}}/100</b></div>
+                </h3>
+            </div>
+                <div class="score-div">
+                    
+                    <div id="wrong" style="display:none;text-align:center;"><h2 style="color:red;"><b>WRONG!</b></h2></div>
+                    <div id="win" style="display:none;text-align:center;"><h2 style="color:green;"><b>You Win!</b></h2></div>
+                  </div>
+           
+            <div class="col-sm" style="align-content: right;">
                 <button mdbBtn type="button" color="default" [outline]=true mdbWavesEffect><a
-                        routerLink="app-homepage">Reset</a></button>
+                        onClick="window.location.reload()" routerLink="app-homepage">Reset</a></button>
             </div>
         </div>
     </div>
 </div>
+
 <div><br /><br />
     <div class="container">
         <div class="row">
@@ -47,7 +54,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm"></div>
-            <div class="col-sm"><input class="inputtype" placeholder="Type on me.."></div>
+            <div class="col-sm"><input  (keyup)="onKey($event)" class="inputtype" placeholder="Type on me.."></div>
             <div class="col-sm"></div>
         </div>
     </div>
