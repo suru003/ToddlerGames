@@ -94,7 +94,7 @@ export class DroppableDirective {
       this.score = this.score + 20;
 
       var scoreElement = document.getElementById('score');
-      scoreElement!.innerHTML = "<p><strong>" + this.score + "/100" + "</strong></p>";
+      scoreElement!.innerHTML = "<h1><b>Score:" + this.score + "/100"+"</b></h1>";
       document.getElementById("wrong")!.style.display = "none";
     } else {
       document.getElementById("wrong")!.style.display = "";

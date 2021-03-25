@@ -4,23 +4,25 @@
 
 <div class="inner">
     <a href="#" class="previous">< Back</a>
-    <button style="position: absolute;right: 20px;top: 5px;" type="button" class="btn btn-primary" onClick="window.location.reload();">Reset</button>
+    <button style="position: absolute;right: 20px;top: 20px;" type="button" class="btn btn-primary" onClick="window.location.reload();">Reset</button>
 </div>
 
-
-
-<div>
-  <h1 style="text-align:center">{{title}}</h1>
-  <div id="score"><p><strong>0/100</strong></p></div>
-  <div id="wrong" style="display:none"><p style="color:red;"><strong>WRONG!</strong></p></div>
-</div>
-
+<h1 style="text-align:center">{{title}}</h1>
 <div class="cssmarquee">
   <h1>Drag the shapes on the bottom to match them to the shapes on top </h1>
 </div>
 
 <br>
-<br>
+
+
+
+<div class="score-div">
+  <div id="score" style="float:right;"><h1><b>Score:0/100</b></h1></div>
+  <div id="wrong" style="display:none; "><b><h2 style="color:red;text-align:center;">WRONG!</h2></b></div>
+</div>
+
+
+
 
 <div class="items-container" appDroppable>
   <div appDraggable>
