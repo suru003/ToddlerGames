@@ -30,7 +30,6 @@ export class DroppableDirective {
 
   @HostListener('mousemove', ['$event'])
   onMouseMove(event:any): void {
-    console.log('mousemove' + event.target.getAttribute("id"));
     if (this.draggingElement) {
       const svgPoint = this.svgService.getSVGPoint(event, this.draggingElement);
       this.setPosition(this.draggingElement, { x: svgPoint.x, y: svgPoint.y  });
@@ -64,13 +63,26 @@ export class DroppableDirective {
         var rect2 = el2.getBoundingClientRect();
 
         var col = !(
-          rect1.top > rect2.bottom ||
-          rect1.right < rect2.left ||
-          rect1.bottom < rect2.top ||
-          rect1.left > rect2.right
+          rect1.top > (rect2.bottom) ||
+          rect1.right < (rect2.left) ||
+          rect1.bottom < (rect2.top) ||
+          rect1.left > (rect2.right)
         );
 
+//         var col = ((rect1.top - rect2.top) > 0 ? (rect1.top - rect2.top):(rect2.top - rect1.top)) <= 10
+
         var type_match = el1.getAttribute("type") == el2.getAttribute("type");
+
+        if (type_match) {
+                  console.log(rect1.top + ", " + rect2.bottom);
+                  console.log(rect1.right + ", " + rect2.left);
+                  console.log(rect1.bottom + ", " + rect2.top);
+                  console.log(rect1.left + ", " + rect2.right);
+        } else {
+          console.log("type mismatch: ", el1.getAttribute("type") +
+          ", " + el2.getAttribute("type") )
+        }
+
         return col && type_match;
       },
     };
@@ -102,14 +114,13 @@ export class DroppableDirective {
       var scoreElement = document.getElementById('score');
       scoreElement!.innerHTML = "<h1><b>Score:" + this.score + "/100"+"</b></h1>";
       document.getElementById("wrong")!.style.display = "none";
+
+      if (this.score == 100) {
+        document.getElementById("win")!.style.display = "";
+      }
+
     } else {
       document.getElementById("wrong")!.style.display = "";
-      if (this.draggingElement != null) {
-//         this.draggingElement.style.position = "absolute";
-//         this.setPosition(this.draggingElement, { x: this.mouseDownPoint_x, y: this.mouseDownPoint_y  });
-      } else {
-        console.log("Dragging point is null");
-      }
     }
 
     this.draggingElement = null;
@@ -117,8 +128,6 @@ export class DroppableDirective {
 
   @HostListener('mouseleave', ['$event'])
   onMouseLeave(event:any): void {
-    console.log("mouse leave");
-    this.draggingElement = null;
   }
 
   private setPosition(element:any, coord: { x:any, y:any }) {
