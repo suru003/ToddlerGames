@@ -1,16 +1,54 @@
-<GridLayout>
-    <ScrollView>
-        <StackLayout class="home-panel">
-            <!--Add your page content here-->
-            <!-- <Button class= "homescreen_buttons" (tap)="onButtonTap()" (click)="onButtonTap()">Game 1</Button><br>
-            <Button class= "homescreen_buttons" (tap)="onButtonTap()" (click)="onButtonTap()">Game 2</Button><br>
-            <Button class= "homescreen_buttons" (tap)="onButtonTap()" (click)="onButtonTap()">Game 3</Button><br> -->
-            <br>
-            <button mdbBtn type="button" color="primary" [outline]=true mdbWavesEffect><a routerLink="app-homepage">Back</a></button><br><br>
-            <button mdbBtn type="button" color="default" [outline]=true mdbWavesEffect><a routerLink="app-homepage">Reset</a></button><br><br>
-            <button mdbBtn type="button" color="warning" [outline]=true mdbWavesEffect><a routerLink="app-homepage">Play</a></button><br><br>
-
-        </StackLayout>
-    </ScrollView>
-
-</GridLayout>
+<div><br /><br />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <button mdbBtn type="button" color="primary" [outline]=true mdbWavesEffect><a
+                        routerLink="app-homepage">Back</a></button>
+            </div>
+            <div class="col-lg">
+                <h1 class="help" data-text="🎈">
+                    🎈Type the letter you see in the balloon.
+                </h1>
+            </div>
+            <div class="col-sm">
+                <button mdbBtn type="button" color="default" [outline]=true mdbWavesEffect><a
+                        routerLink="app-homepage">Reset</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div><br /><br />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div [id]="position1"><img src="../../assets/game2/A.png" [position]='position1' /></div>
+            </div>
+            <div class="col-lg">
+                <div [id]="position2"><img src="../../assets/game2/N.png" [position]='position2' /></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div><br /><br />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-sm">
+                <div [id]="position3"><img src="../../assets/game2/B.png" [position]='position3' /></div>
+            </div>
+            <div class="col-sm"></div>
+            <div class="col-sm">
+                <div [id]="position4"><img src="../../assets/game2/K.png" [position]='position4' /></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div><br /><br />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-sm"><input class="inputtype" placeholder="Type on me.."></div>
+            <div class="col-sm"></div>
+        </div>
+    </div>
+</div>

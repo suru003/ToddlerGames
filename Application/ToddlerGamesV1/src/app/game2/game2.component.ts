@@ -12,5 +12,9 @@ export class Game2Component implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
+  public position1: object={ X: 160, Y: 14 };
+  public position2: object={ X: 160, Y: 240 };
+  public position3: object={ X: 100, Y: 14 };
+  public position4: object={ X: 100, Y: 240 };
 }
