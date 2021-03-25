@@ -9,7 +9,7 @@
     <!-- Highlight Card -->
     <div class="card highlight-card card-small">
 
-      <svg id="rocket" alt="Rocket Ship" xmlns="http://www.w3.org/2000/svg" width="101.678" height="101.678" viewBox="0 0 101.678 101.678">
+      <svg id="rocket" alt="Rocket Ship" xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 101.678 101.678">
         <g id="Group_83" data-name="Group 83" transform="translate(-141 -696)">
           <circle id="Ellipse_8" data-name="Ellipse 8" cx="50.839" cy="50.839" r="50.839" transform="translate(141 696)" fill="#dd0031"/>
           <g id="Group_47" data-name="Group 47" transform="translate(165.185 720.185)">
@@ -19,7 +19,7 @@
         </g>
       </svg>
       <ActionBar title="Home">
-        HOME
+        PICK A GAME
       </ActionBar>
 
       <svg id="rocket-smoke" alt="Rocket Ship Smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632" viewBox="0 0 516.119 1083.632">
@@ -31,9 +31,11 @@
       <ScrollView>
           <StackLayout class="home-panel">
             <br><br>
-            <button mdbBtn type="button" color="primary" [outline]=true mdbWavesEffect><a routerLink="app-homepage">Easy</a></button>
-            <button mdbBtn type="button" color="default" [outline]=true mdbWavesEffect><a routerLink="app-homepage">Medium</a></button>
-            <button mdbBtn type="button" color="warning" [outline]=true mdbWavesEffect><a routerLink="app-homepage">Hard</a></button>
+            <mat-radio-group aria-label="Select an option">
+              <mat-radio-button value="1" [checked]=true>Easy</mat-radio-button>
+              <mat-radio-button value="2">Medium</mat-radio-button>
+              <mat-radio-button value="3">Hard</mat-radio-button>
+            </mat-radio-group> 
             <br><br>
               <button mdbBtn type="button" color="primary" [outline]='outlineEnable' mdbWavesEffect><a routerLink="app-game1">Drag and Drop</a></button><br><br>
               <button mdbBtn type="button" color="default" [outline]='outlineEnable' mdbWavesEffect><a routerLink="app-game2">Type 'n' Pop</a></button><br><br>
