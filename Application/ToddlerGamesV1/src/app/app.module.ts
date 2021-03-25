@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SVGService } from './game1/svg.service';
 import { DraggableDirective } from './game1/draggable.directive';
 import { DroppableDirective } from './game1/droppable.directive';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DroppableDirective } from './game1/droppable.directive';
     BrowserModule,
     AppRoutingModule,
     A11yModule,
+    MatRadioModule,
     MDBBootstrapModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     DragDropModule
