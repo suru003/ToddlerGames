@@ -9,7 +9,7 @@ export class Game2Component implements OnInit {
   allPosts: string[];
 
   constructor() {
-    this.allPosts = ["A", "B", "N", "K"];
+    this.allPosts = ["A", "B", "N", "K","S"];
   }
 
   ngOnInit(): void {
@@ -17,15 +17,32 @@ export class Game2Component implements OnInit {
 
   }
   score = 0;
-
+  typeInput: any;
+  A = "../../assets/game2/A.png";
+  N = "../../assets/game2/N.png";
+  B = "../../assets/game2/B.png";
+  K = "../../assets/game2/K.png";
+  S = "../../assets/game2/S.png";
+  pop = "../../assets/game2/pop.png";
   onKey(event: any) { // without type info
 
     var typedLetter = event.target.value.toUpperCase();
+    event.target.value = '';
     if (this.allPosts.indexOf(typedLetter) == -1)
       document.getElementById("wrong")!.style.display = "";
     else if (this.allPosts.indexOf(typedLetter) > -1) {
-      this.score += 25;
+      this.score += 100/this.allPosts.length;
       document.getElementById("wrong")!.style.display = "none";
+      if (typedLetter == "A")
+        this.A = this.pop;
+      if (typedLetter == "B")
+        this.B = this.pop;
+      if (typedLetter == "N")
+        this.N = this.pop;
+      if (typedLetter == "K")
+        this.K = this.pop;
+      if (typedLetter == "S")
+        this.S = this.pop;
     }
 
 

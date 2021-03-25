@@ -2,20 +2,16 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <button mdbBtn type="button" color="primary" [outline]=true mdbWavesEffect><a href="#"> < Back</a></button>
+                <button mdbBtn type="button" color="primary" [outline]=true mdbWavesEffect><a href="#">
+                        < Back</a></button>
             </div>
             <div class="col-sm">
-                <h3 class="help" >
+                <h3 class="help">
                     🎈Type the letter you see in the balloon.
-                    <div id="score" ><b>Score:{{score}}/100</b></div>
+                    <div id="score"><b>Score:{{score}}/100</b></div>
                 </h3>
             </div>
-                <div class="score-div">
-                    
-                    <div id="wrong" style="display:none;text-align:center;"><h2 style="color:red;"><b>WRONG!</b></h2></div>
-                    <div id="win" style="display:none;text-align:center;"><h2 style="color:green;"><b>You Win!</b></h2></div>
-                  </div>
-           
+
             <div class="col-sm" style="align-content: right;">
                 <button mdbBtn type="button" color="default" [outline]=true mdbWavesEffect><a
                         onClick="window.location.reload()" routerLink="app-homepage">Reset</a></button>
@@ -28,34 +24,47 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <div [id]="position1"><img src="../../assets/game2/A.png" [position]='position1' /></div>
-            </div>
+
+                <div [id]="position1"><img src={{A}} [position]='position1' />
+                </div>
+                
+            </div><div class="col-sm"></div>
             <div class="col-lg">
-                <div [id]="position2"><img src="../../assets/game2/N.png" [position]='position2' /></div>
+                <div [id]="position2"><img src={{B}} [position]='position2' /></div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm"></div>
+        <div class="col-sm"><input #typeInput (keyup)="onKey($event)" class="inputtype" placeholder="Type on me..">
+        </div>
+        <div class="col-sm"></div>
+    </div>
+    <h2 id="wrong" style="z-index:1;color:red;display:none;text-align:center;"><b>WRONG!</b></h2>
+<h2 id="win" style="z-index:1;color:green;display:none;text-align:center;"><b>You Win!</b></h2>
+</div> 
+
+
 <div><br /><br />
     <div class="container">
         <div class="row">
             <div class="col-sm"></div>
             <div class="col-sm">
-                <div [id]="position3"><img src="../../assets/game2/B.png" [position]='position3' /></div>
+                <div [id]="position3"><img src={{N}} [position]='position3' /></div>
             </div>
             <div class="col-sm"></div>
             <div class="col-sm">
-                <div [id]="position4"><img src="../../assets/game2/K.png" [position]='position4' /></div>
+                <div [id]="position4"><img src={{K}} [position]='position4' /></div>
+            </div>
+            <div class="col-sm"></div>
+            <div class="col-sm">
+                <div [id]="position4"><img src={{S}} [position]='position4' /></div>
             </div>
         </div>
     </div>
 </div>
 <div><br /><br />
-    <div class="container">
-        <div class="row">
-            <div class="col-sm"></div>
-            <div class="col-sm"><input  (keyup)="onKey($event)" class="inputtype" placeholder="Type on me.."></div>
-            <div class="col-sm"></div>
-        </div>
-    </div>
 </div>
