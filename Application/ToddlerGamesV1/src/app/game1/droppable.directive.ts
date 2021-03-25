@@ -6,6 +6,8 @@ import { SVGService } from './svg.service';
 })
 export class DroppableDirective {
   private draggingElement: any;
+  private score = 0;
+  private svgPoint: any;
 
   constructor(private svgService: SVGService) {
   }
@@ -18,7 +20,6 @@ export class DroppableDirective {
     const droppedElement = document.getElementById(droppedElementId)!.cloneNode(true) as any;
 
     dropzone.appendChild(droppedElement);
-
     droppedElement.setAttribute('draggable', true);
 
     const svgPoint = this.svgService.getSVGPoint(event, droppedElement);
@@ -36,12 +37,11 @@ export class DroppableDirective {
 
   @HostListener('mousedown', ['$event'])
   onMouseDown(event:any): void {
-    console.log('down : ' + event.target.getAttribute("id"));
     if (event.target.getAttribute('draggable')) {
       console.log('draggable element: ' + event.target);
       this.draggingElement = event.target;
-    } else {
-      console.log('non draggable element: ' + event.target);
+      this.svgPoint = this.svgService.getSVGPoint(event, this.draggingElement);
+      console.log('mouse down point: ' + this.svgPoint.x + ", " + this.svgPoint.y);
     }
   }
 
@@ -51,6 +51,9 @@ export class DroppableDirective {
 
     var AABB = {
       collide: function (el1:any, el2:any) {
+        if (el1 == null || el2 == null) {
+          return false;
+        }
         var rect1 = el1.getBoundingClientRect();
         var rect2 = el2.getBoundingClientRect();
 
@@ -72,14 +75,32 @@ export class DroppableDirective {
     const circle1 = document.getElementById("circle1");
     const square1 = document.getElementById("square1");
 
-    var coll = AABB.collide(hexagon1, this.draggingElement) ||
-    AABB.collide(rectangle1, this.draggingElement) ||
-    AABB.collide(triangle1, this.draggingElement) ||
-    AABB.collide(circle1, this.draggingElement) ||
-    AABB.collide(square1, this.draggingElement);
-    console.log("element: " + this.draggingElement);
+    var overlapping_element = null;
+    if (AABB.collide(hexagon1, this.draggingElement)) {
+      overlapping_element = hexagon1;
+    } else if (AABB.collide(rectangle1, this.draggingElement)) {
+      overlapping_element = rectangle1;
+    } else if (AABB.collide(triangle1, this.draggingElement)) {
+      overlapping_element = triangle1;
+    } else if (AABB.collide(circle1, this.draggingElement)) {
+      overlapping_element = circle1;
+    } else if (AABB.collide(square1, this.draggingElement)) {
+      overlapping_element = square1;
+    }
 
-    console.log("collides: " + coll);
+    if (overlapping_element != null) {
+      overlapping_element.setAttribute("display", "none");
+      this.draggingElement.setAttribute("display", "none");
+      this.score = this.score + 20;
+
+      var scoreElement = document.getElementById('score');
+      scoreElement!.innerHTML = "<p><strong>" + this.score + "/100" + "</strong></p>";
+      document.getElementById("wrong")!.style.display = "none";
+    } else {
+      document.getElementById("wrong")!.style.display = "";
+      this.setPosition(this.draggingElement, { x: this.svgPoint.x, y: this.svgPoint.y  });
+    }
+
     this.draggingElement = null;
   }
 
