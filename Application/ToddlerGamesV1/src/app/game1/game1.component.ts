@@ -18,6 +18,13 @@ export class Game1Component implements OnInit {
   console.log ("init ");
 //     this.svgService.initializePanZoom();
   }
+
+    onDragEnded(event:any): void {
+        console.log("called onDragEnded");
+        event.source.element.nativeElement.style.transform = 'none' // visually reset element to its origin
+        const source: any = event.source
+        source._passiveTransform = { x: 0, y: 0 } // make it so new drag starts from same origin
+    }
 }
 //
 // export class Game1Component {
