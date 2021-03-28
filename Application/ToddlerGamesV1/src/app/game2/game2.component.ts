@@ -13,8 +13,13 @@ export class Game2Component implements OnInit {
   }
 
   ngOnInit(): void {
-
-
+  }
+  
+  openHelp(){
+    document.getElementById("myModal")!.style.display = "block";
+  }
+  closeModal(){
+    document.getElementById("myModal")!.style.display = "none";
   }
   score = 0;
   typeInput: any;

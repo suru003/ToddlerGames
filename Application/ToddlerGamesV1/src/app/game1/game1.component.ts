@@ -19,6 +19,13 @@ export class Game1Component implements OnInit {
 //     this.svgService.initializePanZoom();
   }
 
+  openHelp(){
+    document.getElementById("myModal")!.style.display = "block";
+  }
+  closeModal(){
+    document.getElementById("myModal")!.style.display = "none";
+  }
+
     onDragEnded(event:any): void {
         console.log("called onDragEnded");
         event.source.element.nativeElement.style.transform = 'none' // visually reset element to its origin
