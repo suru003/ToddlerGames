@@ -9,6 +9,55 @@
 #left, #right {
     top: 0; bottom: 0;
     width: 15px;
+    img{
+        height:30%;
+        position: fixed;
+        margin-top: 25%;
+    }
+    .dl_arrow, .dr_arrow{
+        position: fixed;
+        margin-top: 35%;
+        height: 15%;
+        
+    }
+    .r_arrow {
+        margin-left: -15%;
+    }
+    .dl_arrow{
+        margin-left: 5%;
+    }
+    .dr_arrow{
+        margin-left: -10%;   
+    }
+
+    // on hover
+    .dl_arrow:hover{
+        opacity: 70%;
+        }
+    .dr_arrow:hover{
+        opacity: 70%;
+        }
+    .l_arrow:hover{
+        opacity: 70%;
+        }
+    .r_arrow:hover{
+        opacity: 70%;
+        }
+
+
+    // on click
+    .dl_arrow:active{
+        transform: translateY(4px);
+        }   
+    .dr_arrow:active{
+        transform: translateY(4px);
+        }   
+    .l_arrow:active{
+        transform: translateY(4px);
+        }   
+    .r_arrow:active{
+        transform: translateY(4px);
+        }               
     }
 #left { left: 0; }
 #right { right: 0; }
@@ -37,12 +86,51 @@
         position: relative;
         margin-left: 50%;
     }
-    .central_click{
-        position:absolute; 
-        justify-content: center;
-        margin-left: -10%;
+    .center_part{
+        position: fixed; 
+        top: 50%; 
+        left: 45%;
+        .restart{
+            position: fixed; 
+            height: 20%;
+        }
+        .next_level_icon{
+            position: fixed; 
+            height: 10%;
+            opacity: 80%;
+        }
+        .next_level_button{
+            position: fixed; 
+            height: 10%;
+            width: 12%;
+            padding-left: 7%;
+        }
+        .next_level_button:hover{
+            opacity: 70%;
+        }
+        .next_level_button:active{
+            transform: translateY(4px);
+            }               
+        
+        .restart:hover{
+            opacity: 70%;
+        }
     }
 }
+
+.highScore{
+    color: darkorange;
+    position: fixed;
+    right:10%;
+    top:5%
+}
+.score{
+    color: darkgoldenrod;
+    position: fixed;
+    left:10%;
+    top:5%
+}
+
 
 .eye {
     position: relative;

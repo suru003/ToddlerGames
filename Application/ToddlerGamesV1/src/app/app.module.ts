@@ -13,6 +13,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { SVGService } from './game1/svg.service';
 import { DraggableDirective } from './game1/draggable.directive';
 import { DroppableDirective } from './game1/droppable.directive';
@@ -26,18 +28,21 @@ import {MatRadioModule} from '@angular/material/radio';
     Game3Component,
     HomepageComponent,
     ProfileComponent,
-    DraggableDirective,
+    LoginComponent,
+    RegisterComponent,
+	DraggableDirective,
     DroppableDirective
+	
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     A11yModule,
-    MatRadioModule,
+	MatRadioModule,
     MDBBootstrapModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    DragDropModule
+	DragDropModule    
   ],
   providers: [SVGService],
   bootstrap: [AppComponent],

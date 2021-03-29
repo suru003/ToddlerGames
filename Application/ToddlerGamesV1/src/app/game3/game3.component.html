@@ -1,32 +1,52 @@
 <div #animationElement class="page">
     <!-- Borders -->
-    <div id="left"></div>
-    <div id="right"></div>
+    <div id="left">
+        <img class="l_arrow" src="../../assets/game3/left.png" alt="?"><br>
+        <img class="dl_arrow" src="../../assets/game3/down_click.png" alt="?">
+    </div>
+    
+    <div id="right">
+        <img class="r_arrow" src="../../assets/game3/right.png" alt="?"><br>
+        <img class="dr_arrow" src="../../assets/game3/down_click.png" alt="?">
+    </div>
     <div id="top"></div>
     <div id="bottom"></div>
+    
+    <div class="center_part">
+        <h1 [hidden]="game_over" style="color: red; ">GAME OVER!</h1>
+        <h2 [hidden]="game_over" style="color: brown;">TRY AGAIN?</h2>
+        <img class="restart" [hidden]="game_over" (click)="reloadPage()" src="../../assets/game3/reload.png" alt="?">
+        <h3 [hidden]="level_completed" style="color: rgb(36, 163, 36);">LEVEL {{this.level}} COMPLETED!</h3>
+        <img class="next_level_icon" [hidden]="level_completed" src="../../assets/game3/next_level_icon.png" alt="?">
+        <img class="next_level_button" [hidden]="level_completed" (click)="nextLevel()" src="../../assets/game3/next_level_button.png" alt="?"><br>
+        
+    </div>
 
     <!-- Top elements -->
     <div  class="top_items">
+        <h3 class="score">
+            Level:{{this.level}} <br> 
+            Score: {{this.score | number}}<br> 
+            <!-- DIF = {{this.dif}}<br> 
+            last_dif = {{this.last_dif}}<br>
+            base_x = {{this.baseBrick_x}}<br>
+            last_x = {{this.lastBrick_x}}<br>
+            curr_X = {{this.curr_x}}<br> -->
+            <!-- page_x = {{this.page_x}}<br>
+            page_y = {{this.page_y}}<br>
+            page_w = {{this.page_w}}<br> -->
+        </h3> 
         <div class='eye left'><span class="eye-iris"></span></div>
         <img id="arrow" src="{{top_items[0]}}" height="100">
         <div class='eye right'><span class="eye-iris"></span></div>
+        <h3 class="highScore">Level Highscore: {{this.highScore | number}}</h3> 
+        
+        <br>
+        <div *ngFor="let index of bricksList" >
+            <img class="{{'brick'+index}}" style="{{'margin-top: '+(-7-(index*3))+'%; position: absolute;'}}" src="{{top_items[1]}}" height="100">
         <br>
         <div>
-            <img class="brick0" style="margin-top: -7%; position: absolute;" src="{{top_items[1]}}" height="100">
-            <img class="brick1" style="margin-top: -7%; position: absolute;" src="{{top_items[1]}}" height="100">
-            <img class="brick2" style="margin-top: -7%; position: absolute;" src="{{top_items[1]}}" height="100">
-            <img class="brick3" style="margin-top: -7%; position: absolute;" src="{{top_items[1]}}" height="100">
-            <img class="brick4" style="margin-top: -7%; position: absolute;" src="{{top_items[1]}}" height="100">
-            <img class="brick5" style="margin-top: -7%; position: absolute;" src="{{top_items[1]}}" height="100">
-            <img class="brick6" style="margin-top: -7%; position: absolute;" src="{{top_items[1]}}" height="100">
-            <img class="brick7" style="margin-top: -7%; position: absolute;" src="{{top_items[1]}}" height="100">
-            <img class="brick8" style="margin-top: -7%; position: absolute;" src="{{top_items[1]}}" height="100">
-            <img class="brick9" style="margin-top: -7%; position: absolute;" src="{{top_items[1]}}" height="100">
-                        
-        </div>
-        <!-- <img class="central_click" src="../../assets/game3/reload.png" height="300" > -->
-        <br>
-
-    
     </div>
+    <img class="bottom_brick" style="{{'position:fixed; bottom:0.4%; right:'+this.baseBrickPadding+'%;'}}" src="{{top_items[1]}}" height="100">
+
 </div>
