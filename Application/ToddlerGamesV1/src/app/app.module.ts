@@ -13,6 +13,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ProfileComponent } from './profile/profile.component';
     Game2Component,
     Game3Component,
     HomepageComponent,
-    ProfileComponent
+    ProfileComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserAnimationsModule,
