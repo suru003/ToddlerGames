@@ -5,9 +5,23 @@
 <div class="inner">
     <a href="#" class="previous">< Back</a>
     <button style="position: absolute;right: 20px;top: 20px;" type="button" class="btn btn-primary" onClick="window.location.reload();">Reset</button>
-</div>
+    
+      <button mdbBtn type="button" (click)="openHelp()" color="primary" [outline]=true mdbWavesEffect>HELP</button>
+  
+  </div>
 
 
+  
+  
+  <div style="display:none;text-align:center;" class="modal" id="myModal" >
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span (click)="closeModal()"  class="close">&times;</span>
+      <p><img src="../../assets/game1/help.gif" /></p>
+    </div>
+  
+  </div>
 <br>
 <h1 style="text-align:center">{{title}}</h1>
 

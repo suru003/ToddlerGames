@@ -11,6 +11,20 @@
                     <div id="score"><b>Score:{{score}}/100</b></div>
                 </h3>
             </div>
+            <div class="col-sm">
+                <button mdbBtn type="button" (click)="openHelp()" color="primary" [outline]=true mdbWavesEffect>HELP</button>
+            </div>
+            
+            
+            <div style="display:none;text-align:center;" class="modal" id="myModal" >
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span (click)="closeModal()"  class="close">&times;</span>
+                  <p><img src="../../assets/game2/help.gif" /></p>
+                </div>
+              
+              </div>
 
             <div class="col-sm" style="align-content: right;">
                 <button mdbBtn type="button" color="default" [outline]=true mdbWavesEffect><a
