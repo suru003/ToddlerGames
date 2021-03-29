@@ -1,0 +1,30 @@
+[
+    {
+        "bricks_number":"added for just comfort access",
+        "range":0.21
+    },
+    {
+        "bricks_number":5,
+        "range":0.3
+    },
+    {
+        "bricks_number":6,
+        "range":0.3
+    },
+    {
+        "bricks_number":7,
+        "range":0.4
+    },
+    {
+        "bricks_number":8,
+        "range":0.4
+    },
+    {
+        "bricks_number":9,
+        "range":0.5
+    },
+    {
+        "bricks_number":10,
+        "range":0.5
+    }
+]

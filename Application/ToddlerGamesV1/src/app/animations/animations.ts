@@ -6,11 +6,13 @@ export function followAnimation(rot: number): AnimationMetadata {
   ));
 }; 
 
-export function brickSlideAnimation(cord: number[], brickNumber:number): AnimationMetadata {
-    return query('.brick'+brickNumber, animate('100ms',
-        style({ transform: 'translateX(' + cord[0] + 'px)' })
-    //   style({ transform: 'translate(' + cord[0] + 'px, ' + cord[1] + 'px)' })
+export function brickSlideAnimation(cord: number, difficulty:number, brickNumber:number): AnimationMetadata {
+
+    while(true){
+      return query('.brick'+brickNumber, animate(1000*(3-difficulty)+"ms",
+        style({ transform: 'translateX(' + cord + 'px)' },)
     ));
+  }
   }; 
 
 export function brickFallDownAnimation(cord_x: number, cord_y: number, brickNumber: number): AnimationMetadata {
