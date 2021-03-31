@@ -18,7 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import { SVGService } from './game1/svg.service';
 import { DraggableDirective } from './game1/draggable.directive';
 import { DroppableDirective } from './game1/droppable.directive';
-import {MatRadioModule} from '@angular/material/radio';
+import {MatRadioModule, MatRadioChange} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import {MatRadioModule} from '@angular/material/radio';
     RegisterComponent,
 	DraggableDirective,
     DroppableDirective
-	
+
   ],
   imports: [
     BrowserAnimationsModule,
@@ -42,7 +42,7 @@ import {MatRadioModule} from '@angular/material/radio';
 	MatRadioModule,
     MDBBootstrapModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-	DragDropModule    
+	DragDropModule
   ],
   providers: [SVGService],
   bootstrap: [AppComponent],
