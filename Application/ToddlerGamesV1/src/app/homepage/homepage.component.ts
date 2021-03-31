@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatRadioButton, MatRadioChange} from '@angular/material/radio';
 import { LocalStorageService } from '../local-storage.service';
 @Component({
   selector: 'app-homepage',
@@ -7,21 +8,20 @@ import { LocalStorageService } from '../local-storage.service';
 })
 export class HomepageComponent implements OnInit {
   public username:string="Guest2031";
-  constructor(private localStorage: LocalStorageService) { 
-    this.localStorage.set("difficulty",1);
+  constructor(private localStorage: LocalStorageService) {
   }
 
   public outlineEnable:boolean =true;
 
   ngOnInit(): void {
-    var temp = this.localStorage.get("username");
+    localStorage.removeItem("level");
+    var temp = localStorage.getItem("username");
     if(temp!=null)
       this.username=temp;
   }
 
-  public updateDifficulty(diff:number){
-    console.log("updated difficulty = "+diff)
-    this.localStorage.set("difficulty",diff);
+  onLevelChange(mrChange: MatRadioChange) {
+     localStorage.setItem("level", mrChange.value);
   }
 
 }
