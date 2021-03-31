@@ -39,9 +39,9 @@
               <Button class= "homescreen_buttons" (tap)="onButtonTap()" (click)="onButtonTap()">Game 3</Button><br> -->
               <br><br>
             <mat-radio-group aria-label="Select an option">
-              <mat-radio-button value="1" [checked]=true>Easy</mat-radio-button>
-              <mat-radio-button value="2">Medium</mat-radio-button>
-              <mat-radio-button value="3">Hard</mat-radio-button>
+              <mat-radio-button value="1" style="color: lime;" (click)="updateDifficulty(1)">Easy</mat-radio-button>
+              <mat-radio-button value="2" style="color: rgb(165, 165, 1);" (click)="updateDifficulty(2)">Medium</mat-radio-button>
+              <mat-radio-button value="3" style="color: red;" (click)="updateDifficulty(3)">Hard</mat-radio-button>
             </mat-radio-group> 
             <br><br>
               <button mdbBtn type="button" color="primary" [outline]='outlineEnable' mdbWavesEffect><a routerLink="/app-game1">Drag and Drop</a></button><br><br>
