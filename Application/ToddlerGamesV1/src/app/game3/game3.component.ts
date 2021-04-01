@@ -105,7 +105,7 @@ export class Game3Component{
     if(this.highScore==null)
       this.highScore=0;
     // highscore
-    this.difficulty = localStorage.get("difficulty");
+    this.difficulty = localStorage.get("level");
     if(this.difficulty==null)
       this.difficulty=1;
 
