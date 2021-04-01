@@ -11,3 +11,6 @@ npm i --save hammerjs
 
 #cdk
 npm i @angular/cdk --save
+
+#graphs
+npm install apexcharts ng-apexcharts --save

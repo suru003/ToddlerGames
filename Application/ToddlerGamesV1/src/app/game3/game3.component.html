@@ -1,4 +1,4 @@
-<div #animationElement class="page">
+<div #animationElement class="page" style="background-image: url(../../assets/game3/bg2.jpg);">
     <!-- Borders -->
     <div id="left">
         <img class="l_arrow" src="../../assets/game3/left.png" alt="?"><br>
@@ -22,9 +22,7 @@
         <br>
         <img [hidden]="this.no_hide" style="{{'position: absolute;  left:'+ this.no_left +'px; top:'+ this.no_top +'px;'}}" src="../../assets/game3/no.gif" alt="?"><br>
     </div>
-    <div class="col-sm">
-        <button mdbBtn type="button" (click)="openHelp()" color="primary" [outline]=true mdbWavesEffect>HELP</button>
-    </div>
+ 
     
     
     <div style="display:none;text-align:center;" class="modal" id="myModal" >
@@ -64,7 +62,9 @@
         <img id="arrow" src="{{top_items[0]}}" height="100">
         <div class='eye right'><span class="eye-iris"></span></div>
         <h3 class="highScore">Level Highscore: {{this.highScore | number}}</h3> 
-        
+        <div class="col-sm">
+            <button mdbBtn type="button" (click)="openHelp()" color="primary" [outline]=true mdbWavesEffect>HELP</button>
+        </div>
         <br>
         <div *ngFor="let index of bricksList" >
             <img class="{{'brick'+index}}" style="{{'margin-top: '+(-7-(index*3))+'%; position: absolute;'}}" src="{{top_items[1]}}" height="100">

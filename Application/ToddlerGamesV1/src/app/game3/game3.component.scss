@@ -76,7 +76,6 @@
     align-items: center;
     justify-content: center;
     
-    background-image: url("../../assets/game3/bg2.jpg");    
     background-size: cover;
     min-width: 100%;
     min-height: 100%;
@@ -218,3 +217,9 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+.col-sm{
+    position: fixed;
+    left: 20%;
+    top:5%
+}
