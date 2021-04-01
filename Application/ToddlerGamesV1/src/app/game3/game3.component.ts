@@ -6,6 +6,7 @@ import { brickSlideAnimation, brickFallDownAnimation, followAnimation, heartsAni
 import { LocalStorageService } from '../local-storage.service';
 
 import * as data from './levels_desc.json'
+import { I } from 'angular-bootstrap-md/lib/free/utils/keyboard-navigation';
 
 
 @Component({
@@ -31,8 +32,8 @@ export class Game3Component{
 
   // limit brick dif
   private dif_limit = 50;
-  private validGame = true;
-  
+  public validGame = true;
+
   // temporary
   public last_dif=0;
   public dif=0;
@@ -57,12 +58,23 @@ export class Game3Component{
   public baseBrickPadding:number=50;
 
 
+  // gif co-ordinates and hidden
+  public clap_hide = true;
+  public no_hide = true;
+  public congrats_hide = true;
+  
+  public clap_left = 0;
+  public clap_top = 0;
+  public no_left = 0;
+  public no_top = 0;
+  
   public bricksList:number[] = [];
   
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
     // console.log("event "+event.keyCode);
     if(event.keyCode==32){
+      // console.log(this.validGame+" and  "+this.level_completed);
       this.releaseBrick(this.el);
     }
     else if(event.keyCode==37){
@@ -78,11 +90,12 @@ export class Game3Component{
 
 
   constructor(private builder: AnimationBuilder, private localStorage : LocalStorageService, private renderer: Renderer2) {
-    //reset
-    // localStorage.set("current_level",1);
+    // reset
+    // this.resetGame()
 
     //level
     this.level = localStorage.get("current_level");
+    console.log("this.level = "+this.level)
     if(this.level==null)
       this.level=1;
       
@@ -216,10 +229,12 @@ export class Game3Component{
       return 
     const cord = this.calculateMovement(el);
     console.log("cord = "+cord)
+    // right slide movement
     if(direction==1){
       const player = this.playerFor(el, brickSlideAnimation(cord, this.difficulty, this.stackedBricks));
       player.play();
     }
+    // left slide movement
     else{
       const player = this.playerFor(el, brickSlideAnimation(-cord, this.difficulty, this.stackedBricks));
       player.play();
@@ -230,48 +245,76 @@ export class Game3Component{
     if(!this.validGame)
       return 
     
+    // getting current hanging brick
     const hangingBrick = document.querySelector('.brick'+this.stackedBricks);
     if(hangingBrick!=null){
-      const cord_x = hangingBrick.getBoundingClientRect().x - (window.innerWidth/2);
+      const hangingBrick_x = hangingBrick.getBoundingClientRect().x 
+      const cord_x = hangingBrick_x - (window.innerWidth/2);
       const cord_y = window.innerHeight-((this.stackedBricks+1)*20)-150;  // 1 for base brick and 150 padding
       // console.log("cords = "+cord_x+","+cord_y+" tried "+window.pageXOffset)
       // console.log("cords = "+cord_x+",this.baseBrick_x "+this.baseBrick_x+" this.brickWidth="+this.brickWidth);
       this.curr_x = cord_x;
+      // base brick diff
       const base_diff = Math.abs(this.baseBrick_x-cord_x);
+      // last brick diff
       var last_brick_diff = Math.abs(this.lastBrick_x-cord_x);
       this.dif= base_diff;
       this.last_dif= last_brick_diff;
 
       this.lastBrick_x = cord_x;
       
-      console.log("base_diff="+base_diff)
+      // console.log("base_diff="+base_diff)
+      // padding -
       if(this.stackedBricks==0)
         last_brick_diff-=100;
 
       console.log("last_brick_diff="+last_brick_diff)
-      if(last_brick_diff==0){
-        this.score+=1;
+
+      // might decrease that diff limit for bonus point in higher difficulties
+      if(-1<last_brick_diff && last_brick_diff<5){
+        this.clap_left = hangingBrick_x;
+        this.clap_top = cord_y-100;
+        this.score += 1;
+        
+        // delay
+        (async () => { 
+          this.clap_hide = false;
+          await this.delay(1000);
+          this.clap_hide = true;
+        })();
+        
       }
-      else if((this.dif_limit<base_diff && base_diff<this.dif_limit*3) && this.dif_limit>last_brick_diff){
+      if((this.dif_limit<base_diff && base_diff<this.dif_limit*3) && this.dif_limit>last_brick_diff){
         this.score+=(1-(last_brick_diff/this.brickWidth));
       }
       else{
-        // console.log("(this.dif_limit<base_diff && base_diff<this.dif_limit*3) "+(this.dif_limit<base_diff && base_diff<this.dif_limit*3))
-        // console.log("this.dif_limit = "+this.dif_limit+" last_brick_diff "+last_brick_diff)
-        // console.log("this.dif_limit<last_brick_diff"+(this.dif_limit<last_brick_diff))
-        this.game_over=false;
-        if(this.highScore<this.score)
-          localStorage.setItem("highscore_level_"+this.level, this.score+"");
+        this.game_over = false;
+        this.no_hide = false;
+        this.no_left = hangingBrick_x;
+        this.no_top = cord_y-100;
+        
         this.validGame=false
         
       }
+      
+      // Brick fall 
       const player = this.playerFor(el, brickFallDownAnimation(cord_x, cord_y, this.stackedBricks));
       player.play();
       this.stackedBricks+=1;
       
-      if(this.stackedBricks==this.totalBricks){
+      if(this.stackedBricks==this.totalBricks && this.validGame){
           this.level_completed = false;
       }
+
+      // level highscore update
+      if(this.highScore<this.score){
+        if(!this.level_completed || !this.validGame){
+          this.congrats_hide = false;
+          this.highScore = this.score;
+        }
+        this.localStorage.set("highscore_level_"+this.level, this.score+"");
+      }
+      
     }
   }
   private playerFor(el: Element, animation: AnimationMetadata|AnimationMetadata[]): AnimationPlayer {
@@ -325,8 +368,19 @@ export class Game3Component{
     window.location.reload();
   }
   public nextLevel(){
-    localStorage.setItem("current_level",this.level+1+"") 
+    this.localStorage.set("current_level",this.level+1+"") 
     window.location.reload();
   }
 
+  private delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+  public resetGame(){
+    this.localStorage.set("current_level",1);
+    var i = 1
+    for(i=1;i<7;i++){
+      this.localStorage.set("highscore_level_"+i,0)
+    }
+  }
 }
