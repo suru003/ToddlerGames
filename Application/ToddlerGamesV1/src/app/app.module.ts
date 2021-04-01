@@ -15,6 +15,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { SVGService } from './game1/svg.service';
+import { DraggableDirective } from './game1/draggable.directive';
+import { DroppableDirective } from './game1/droppable.directive';
+import {MatRadioModule, MatRadioChange} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -25,18 +29,22 @@ import { RegisterComponent } from './register/register.component';
     HomepageComponent,
     ProfileComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+	DraggableDirective,
+    DroppableDirective
+
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     A11yModule,
+	MatRadioModule,
     MDBBootstrapModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    DragDropModule
+	DragDropModule
   ],
-  providers: [],
+  providers: [SVGService],
   bootstrap: [AppComponent],
   schemas: [
     NO_ERRORS_SCHEMA

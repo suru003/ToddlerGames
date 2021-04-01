@@ -31,7 +31,7 @@ export class Game3Component{
 
   // limit brick dif
   private dif_limit = 50;
-  
+  private validGame = true;
   // temporary
   public last_dif=0;
   public dif=0;
@@ -78,10 +78,12 @@ export class Game3Component{
 
   constructor(private builder: AnimationBuilder, private localStorage : LocalStorageService, private renderer: Renderer2) {
     //reset
-
+    localStorage.set("current_level",1);
+    
 
     //level
     this.level = localStorage.get("current_level");
+    console.log("this.level = "+this.level)
     if(this.level==null)
       this.level=1;
       
@@ -142,7 +144,6 @@ export class Game3Component{
 
     // left down button
     const dl_arrow = document.querySelector('.dl_arrow');
-    console.log("dl_arrow "+dl_arrow)
     if(dl_arrow!=null){
         this.clickSubscription = fromEvent(dl_arrow, 'click')
         .pipe(throttleTime(1000))
@@ -156,7 +157,6 @@ export class Game3Component{
 
     // right down button
     const dr_arrow = document.querySelector('.dr_arrow');
-    console.log("dr_arrow "+dr_arrow)
     if(dr_arrow!=null){
         this.clickSubscription = fromEvent(dr_arrow, 'click')
         .pipe(throttleTime(1000))
@@ -169,7 +169,6 @@ export class Game3Component{
     }
     // left move button
     const l_arrow = document.querySelector('.l_arrow');
-    console.log("l_arrow "+l_arrow)
     if(l_arrow!=null){
         this.clickSubscription = fromEvent(l_arrow, 'click')
         .pipe(throttleTime(1000))
@@ -183,7 +182,6 @@ export class Game3Component{
 
     // right move button
     const r_arrow = document.querySelector('.r_arrow');
-    console.log("r_arrow "+r_arrow)
     if(r_arrow!=null){
         this.clickSubscription = fromEvent(r_arrow, 'click')
         .pipe(throttleTime(1000))
@@ -215,6 +213,8 @@ export class Game3Component{
     player.play();
   }
   private followTopItems(el: Element, direction:number): void {
+    if(!this.validGame)
+      return 
     const cord = this.calculateMovement(el);
     console.log("cord = "+cord)
     if(direction==1){
@@ -228,6 +228,9 @@ export class Game3Component{
   }
 
   private releaseBrick(el: Element): void {
+    if(!this.validGame)
+      return 
+    
     const hangingBrick = document.querySelector('.brick'+this.stackedBricks);
     if(hangingBrick!=null){
       const cord_x = hangingBrick.getBoundingClientRect().x - (window.innerWidth/2);
@@ -260,6 +263,7 @@ export class Game3Component{
         this.game_over=false;
         if(this.highScore<this.score)
           localStorage.setItem("highscore_level_"+this.level, this.score+"");
+        this.validGame=false
         
       }
       const player = this.playerFor(el, brickFallDownAnimation(cord_x, cord_y, this.stackedBricks));

@@ -4,7 +4,7 @@
       <div class="spacer"></div>
     <span style="margin-right: 5%; padding: 2px 2px 2px 2px;">
       <button><a routerLink="app-profile">Profile</a></button><br>
-    </span>  
+    </span>
   </div>
 
   <div class="content" role="main">
@@ -22,7 +22,7 @@
         </g>
       </svg>
       <ActionBar title="Home">
-        HOME
+        PICK A GAME
       </ActionBar>
 
       <svg id="rocket-smoke" alt="Rocket Ship Smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632" viewBox="0 0 516.119 1083.632">
@@ -37,10 +37,16 @@
               <!-- <Button class= "homescreen_buttons" (tap)="onButtonTap()" (click)="onButtonTap()">Game 1</Button><br>
               <Button class= "homescreen_buttons" (tap)="onButtonTap()" (click)="onButtonTap()">Game 2</Button><br>
               <Button class= "homescreen_buttons" (tap)="onButtonTap()" (click)="onButtonTap()">Game 3</Button><br> -->
-              <br>
-              <button mdbBtn type="button" color="primary" [outline]='outlineEnable' mdbWavesEffect><a routerLink="/app-game1">Drag and Drop Shapes</a></button><br><br>
-              <button mdbBtn type="button" color="default" [outline]='outlineEnable' mdbWavesEffect><a routerLink="/app-game2">Game 2</a></button><br><br>
-              <button mdbBtn type="button" color="warning" [outline]='outlineEnable' mdbWavesEffect><a routerLink="/app-game3">Stack the Bricks</a></button><br><br>
+              <br><br>
+            <mat-radio-group aria-label="Select an option" (change)="onLevelChange($event)" name="level">
+              <mat-radio-button value="1" [checked]=true>Easy</mat-radio-button>
+              <mat-radio-button value="2">Medium</mat-radio-button>
+              <mat-radio-button value="3">Hard</mat-radio-button>
+            </mat-radio-group>
+            <br><br>
+              <button mdbBtn type="button" color="primary" [outline]='outlineEnable' mdbWavesEffect><a routerLink="/app-game1">Drag and Drop</a></button><br><br>
+              <button mdbBtn type="button" color="default" [outline]='outlineEnable' mdbWavesEffect><a routerLink="/app-game2">Type 'n' Pop</a></button><br><br>
+              <button mdbBtn type="button" color="warning" [outline]='outlineEnable' mdbWavesEffect><a routerLink="/app-game3">Stack the Bricks</a></button>
 
           </StackLayout>
       </ScrollView>
