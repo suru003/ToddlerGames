@@ -35,7 +35,7 @@ export type ChartOptions = {
 
 export class StatsComponent {
   @ViewChild("chart") chart: ChartComponent;
-  public chartOptions: Partial<ChartOptions>;
+  public chartOptions: Partial<any>;
 
   constructor() {
     this.chartOptions = {
@@ -95,7 +95,7 @@ export class StatsComponent {
       },
       tooltip: {
         y: {
-          formatter: function (val) {
+          formatter: function (val:any) {
             return + val + " out of 100";
           }
         }
