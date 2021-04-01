@@ -22,7 +22,20 @@
         <br>
         <img [hidden]="this.no_hide" style="{{'position: absolute;  left:'+ this.no_left +'px; top:'+ this.no_top +'px;'}}" src="../../assets/game3/no.gif" alt="?"><br>
     </div>
+    <div class="col-sm">
+        <button mdbBtn type="button" (click)="openHelp()" color="primary" [outline]=true mdbWavesEffect>HELP</button>
+    </div>
+    
+    
+    <div style="display:none;text-align:center;" class="modal" id="myModal" >
 
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span (click)="closeModal()"  class="close">&times;</span>
+          <p><img src="../../assets/game3/help.gif" /></p>
+        </div>
+      
+      </div>
     
     <div class="center_part">
         <h1 [hidden]="game_over" style="color: red; ">GAME OVER!</h1>

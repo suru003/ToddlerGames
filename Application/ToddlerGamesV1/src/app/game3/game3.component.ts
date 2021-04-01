@@ -142,6 +142,12 @@ export class Game3Component{
     
   }
   
+  openHelp(){
+    document.getElementById("myModal")!.style.display = "block";
+  }
+  closeModal(){
+    document.getElementById("myModal")!.style.display = "none";
+  }
   public ngAfterViewInit(): void {
     this.el = this.animationElement.nativeElement;
     
