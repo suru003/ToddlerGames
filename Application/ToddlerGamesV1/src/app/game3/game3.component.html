@@ -12,6 +12,18 @@
     <div id="top"></div>
     <div id="bottom"></div>
     
+    <div class="gif_parts">
+        <img [hidden]="this.congrats_hide" class="congrats" src="../../assets/game3/congrats.gif" alt="?">
+        <h2 [hidden]="this.congrats_hide" style="color: rgba(31, 153, 0, 0.753);" class="congrats">NEW HIGHSCORE!</h2>   
+        <br>
+        <img class="clap" [hidden]="this.clap_hide" style="{{'position: absolute;  left:'+ this.clap_left +'px; top:'+this.clap_top +'px;'}}" src="../../assets/game3/clap.gif" alt="?">
+        <h1 [hidden]="this.clap_hide" style="{{'position: absolute;  left:'+ this.clap_left +'px; top:'+this.clap_top +'px; color: green; font-weight: 100px;'}}">+1</h1>
+        
+        <br>
+        <img [hidden]="this.no_hide" style="{{'position: absolute;  left:'+ this.no_left +'px; top:'+ this.no_top +'px;'}}" src="../../assets/game3/no.gif" alt="?"><br>
+    </div>
+
+    
     <div class="center_part">
         <h1 [hidden]="game_over" style="color: red; ">GAME OVER!</h1>
         <h2 [hidden]="game_over" style="color: brown;">TRY AGAIN?</h2>
@@ -19,7 +31,6 @@
         <h3 [hidden]="level_completed" style="color: rgb(36, 163, 36);">LEVEL {{this.level}} COMPLETED!</h3>
         <img class="next_level_icon" [hidden]="level_completed" src="../../assets/game3/next_level_icon.png" alt="?">
         <img class="next_level_button" [hidden]="level_completed" (click)="nextLevel()" src="../../assets/game3/next_level_button.png" alt="?"><br>
-        
     </div>
 
     <!-- Top elements -->

@@ -90,20 +90,24 @@
         position: fixed; 
         top: 50%; 
         left: 45%;
+        text-align: center;
         .restart{
             position: fixed; 
             height: 20%;
+            left: 47%;
         }
         .next_level_icon{
             position: fixed; 
             height: 10%;
             opacity: 80%;
+            left: 47%;
         }
         .next_level_button{
             position: fixed; 
             height: 10%;
-            width: 12%;
-            padding-left: 7%;
+            width: 11%;
+            left: 50%;
+            padding-left: 3%;
         }
         .next_level_button:hover{
             opacity: 70%;
@@ -157,4 +161,17 @@
     border-radius: 50%;
   }
   
+.gif_parts{
+    position: absolute;
+    left:15%;
+    opacity: 70%;
+    .congrats{
+        // height: 20%;
+        // position: fixed;
+        // top: 15%;
+        position: relative;
+        left: 100px;
+        top: 100px;
+    }
+}
 
