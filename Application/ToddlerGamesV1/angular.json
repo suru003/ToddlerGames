@@ -40,7 +40,8 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "../ToddlerGamesV1/node_modules/hammerjs/hammer.min.js"
+              "../ToddlerGamesV1/node_modules/hammerjs/hammer.min.js",
+              "../ToddlerGamesV1/node_modules/apexcharts/dist/apexcharts.min.js"
             ]
           },
           "configurations": {
