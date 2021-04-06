@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LocalStorageService } from '../local-storage.service';
 @Component({
   selector: 'app-game2',
   templateUrl: './game2.component.html',
@@ -9,9 +9,9 @@ export class Game2Component implements OnInit {
   easyLetters: string[];
   mediumWords: string[];
   hardWords: string[];
-
+  score: number = 0;
   level: string | null;
-  constructor() {
+  constructor(private localStorage: LocalStorageService) {
     this.easyLetters = ["A", "B", "N", "K", "S"];
     this.mediumWords = ["AN", "BE", "NO", "SO", "OK"];
     this.hardWords = ["DAD", "SKY", "NOT", "KID", "MOM", "ANT"];
@@ -61,9 +61,17 @@ export class Game2Component implements OnInit {
     document.getElementById("myModal")!.style.display = "none";
   }
 
-  score = 0;
+
+
   typeInput: any;
   onKey(event: any) { // without type info
+    if (this.level == "1") {
+      localStorage.setItem("game2EasyScore", this.score.toString());
+    } else if (this.level == "2") {
+      localStorage.setItem("game2MedScore", this.score.toString());
+    } else if (this.level == "3") {
+      localStorage.setItem("game2HardScore", this.score.toString());
+    }
     if (this.score == 100) {
       document.getElementById("win")!.style.display = "";
     } else {
@@ -73,7 +81,7 @@ export class Game2Component implements OnInit {
       console.log(this.level);
       if (this.level == "1") {
         var idx = this.easyLetters.indexOf(typedLetter);
-        if ( idx == -1) {
+        if (idx == -1) {
           document.getElementById("wrong")!.style.display = "";
         }
         else {
@@ -100,7 +108,7 @@ export class Game2Component implements OnInit {
         if (typedLetter.length < 2) {
           document.getElementById("typemore")!.style.display = "";
         }
-        else if (midx== -1) {
+        else if (midx == -1) {
           document.getElementById("again")!.style.display = "";
           document.getElementById("typemore")!.style.display = "none";
         }
