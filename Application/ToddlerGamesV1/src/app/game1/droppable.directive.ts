@@ -268,7 +268,13 @@ export class DroppableDirective {
       var scoreElement = document.getElementById('score');
       scoreElement!.innerHTML = "<h1><b>Score:" + this.score + "/100"+"</b></h1>";
       document.getElementById("wrong")!.style.display = "none";
-
+      if (level == "1") {
+        localStorage.setItem("game1EasyScore", this.score.toString());
+      } else if (level == "2") {
+        localStorage.setItem("game1MedScore", this.score.toString());
+      } else if (level == "3") {
+        localStorage.setItem("game1HardScore", this.score.toString());
+      }
       if (this.score == 100) {
         document.getElementById("win")!.style.display = "";
       }

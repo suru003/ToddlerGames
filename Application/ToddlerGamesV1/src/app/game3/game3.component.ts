@@ -321,6 +321,13 @@ export class Game3Component{
         this.localStorage.set("highscore_level_"+this.level, this.score+"");
       }
       
+      if (this.level == 1) {
+        localStorage.setItem("game3EasyScore", this.score.toString());
+      } else if (this.level == 2) {
+        localStorage.setItem("game3MedScore", this.score.toString());
+      } else if (this.level == 3) {
+        localStorage.setItem("game3HardScore", this.score.toString());
+      }
     }
   }
   private playerFor(el: Element, animation: AnimationMetadata|AnimationMetadata[]): AnimationPlayer {
