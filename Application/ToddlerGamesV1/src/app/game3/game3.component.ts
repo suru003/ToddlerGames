@@ -392,8 +392,12 @@ export class Game3Component{
   public resetGame(){
     this.localStorage.set("current_level",1);
     var i = 1
-    for(i=1;i<7;i++){
-      this.localStorage.set("highscore_level_"+i,0)
-    }
+    //https://stackoverflow.com/questions/41684114/easy-way-to-make-a-confirmation-dialog-in-angular
+    if(confirm("confirm please?")){
+      for(i=1;i<7;i++){
+        this.localStorage.set("highscore_level_"+i,0)
+      }
+      this.reloadPage()
+      }
   }
 }
