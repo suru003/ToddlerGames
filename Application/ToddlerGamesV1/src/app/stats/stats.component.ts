@@ -99,7 +99,7 @@ export class StatsComponent {
             return + val + " out of 100";
           }
         }
-      }
+     }
     };
   }
 }
