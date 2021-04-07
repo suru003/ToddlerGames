@@ -87,6 +87,9 @@ export class Game2Component implements OnInit {
         else {
           this.easyLetters.splice(idx, 1);
           this.score += 20;
+          if (this.score == 100)
+            document.getElementById("win")!.style.display = "";
+          localStorage.setItem("game2EasyScore", this.score.toString());
           event.target.value = '';
           console.log(this.score);
           document.getElementById("wrong")!.style.display = "none";
@@ -115,6 +118,9 @@ export class Game2Component implements OnInit {
         else {
           this.mediumWords.splice(midx, 1);
           this.score += 20;
+          if (this.score == 100)
+            document.getElementById("win")!.style.display = "";
+          localStorage.setItem("game2MedScore", this.score.toString());
           event.target.value = '';
           document.getElementById("again")!.style.display = "none";
           document.getElementById("typemore")!.style.display = "none";
@@ -142,6 +148,9 @@ export class Game2Component implements OnInit {
         else {
           this.hardWords.splice(hidx, 1);
           this.score += 20;
+          if (this.score == 100)
+            document.getElementById("win")!.style.display = "";
+            localStorage.setItem("game2HardScore", this.score.toString());
           event.target.value = '';
           document.getElementById("again")!.style.display = "none";
           document.getElementById("typemore")!.style.display = "none";
