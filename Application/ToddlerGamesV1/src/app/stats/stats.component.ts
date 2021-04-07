@@ -16,7 +16,7 @@ import {
 
 export type ChartOptions = {
   series: ApexAxisChartSeries | ApexNonAxisChartSeries;
-  chart: ApexChart |undefined;
+  chart: ApexChart | undefined;
   dataLabels: ApexDataLabels;
   plotOptions: ApexPlotOptions;
   yaxis: ApexYAxis;
@@ -36,70 +36,88 @@ export type ChartOptions = {
 export class StatsComponent {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<any>;
+  dndScores: number[];
+  tnpScores: number[];
+  stbScores: number[];
 
   constructor() {
+    var x = localStorage.getItem("game1EasyScore");
+    var y = localStorage.getItem("game1MedScore");
+    var z = localStorage.getItem("game1HardScore");
+    var X: number = x == null ? 0 : +x;
+    var Y: number = y == null ? 0 : +y;
+    var Z: number = z == null ? 0 : +z;
+    this.dndScores = [X, Y, Z];
+    x = localStorage.getItem("game2EasyScore");
+    y = localStorage.getItem("game2MedScore");
+    z = localStorage.getItem("game2HardScore");
+    X = x == null ? 0 : +x;
+    Y = y == null ? 0 : +y;
+    Z = z == null ? 0 : +z;
+    this.tnpScores = [X, Y, Z];
+    x = localStorage.getItem("game3EasyScore");
+    y = localStorage.getItem("game3MedScore");
+    z = localStorage.getItem("game3HardScore");
+    X = x == null ? 0 : +x;
+    Y = y == null ? 0 : +y;
+    Z = z == null ? 0 : +z;
+    this.stbScores = [X, Y, Z];
     this.chartOptions = {
-      series: [
-        {
-          name: "Drag and Drop",
-          data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-        },
-        {
-          name: "Type 'N' Pop",
-          data: [76, 85, 66, 98, 87, 44, 91, 22, 94]
-        },
-        {
-          name: "Stack the Bricks",
-          data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
-        }
-      ],
+      series: [{
+        name: 'Easy',
+        data: [this.dndScores[0], this.tnpScores[0], this.stbScores[0]]
+      }, {
+        name: 'Medium',
+        data: [this.dndScores[1], this.tnpScores[1], this.stbScores[1]]
+      }, {
+        name: 'Hard',
+        data: [this.dndScores[2], this.tnpScores[2], this.stbScores[2]]
+      }],
       chart: {
-        type: "bar",
-        height: 350
+        type: 'bar',
+        height: 350,
+        stacked: true,
       },
       plotOptions: {
         bar: {
-          horizontal: false,
-          columnWidth: "55%"
-          // endingShape: "rounded"
-        }
-      },
-      dataLabels: {
-        enabled: false
+          horizontal: true,
+        },
       },
       stroke: {
-        show: true,
-        width: 2,
-        colors: ["transparent"]
+        width: 1,
+        colors: ['#fff']
+      },
+      title: {
+        text: 'Fiction Books Sales'
       },
       xaxis: {
-        categories: [
-          "Mar-30",
-          "Mar-31",
-          "Apr-1",
-          "Apr-2",
-          "Apr-3",
-          "Apr-4",
-          "Apr-5",
-          "Apr-6",
-          "Apr-7"
-        ]
+        categories: ['Drag and Drop', 'Type N Pop', 'Stack the Bricks'],
+        labels: {
+          formatter: function (val: string) {
+            return val
+          }
+        }
       },
       yaxis: {
         title: {
-          text: "Score"
+          text: undefined
+        },
+      },
+      tooltip: {
+        y: {
+          formatter: function (val: string) {
+            return val + " out of 100"
+          }
         }
       },
       fill: {
         opacity: 1
       },
-      tooltip: {
-        y: {
-          formatter: function (val:any) {
-            return + val + " out of 100";
-          }
-        }
-     }
+      legend: {
+        position: 'top',
+        horizontalAlign: 'left',
+        offsetX: 40
+      }
     };
   }
 }
