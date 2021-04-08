@@ -287,7 +287,7 @@ export class Game3Component{
       // console.log("base_diff="+base_diff)
       // padding -
       if(this.stackedBricks==0)
-        last_brick_diff-=200;
+        last_brick_diff-=100;
       console.log("base_diff="+base_diff)
       console.log("last_brick_diff="+last_brick_diff)
 
@@ -401,7 +401,9 @@ export class Game3Component{
     window.location.reload();
   }
   public nextLevel(){
-    this.localStorage.set("current_level",this.level+1+"") 
+
+    var temp:number = +this.level+1;
+    this.localStorage.set("current_level",temp+"") ;
     window.location.reload();
   }
 

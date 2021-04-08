@@ -63,7 +63,7 @@
         <img id="arrow" src="{{top_items[0]}}" height="100">
         <div class='eye right'><span class="eye-iris"></span></div>
         <div class="highScore">
-            <h3 >Level Highscore: {{this.highScore | number}}</h3> 
+            <h3 >Level Highscore: {{this.highScore | number: '1.0-0'}}</h3> 
             <button mdbBtn type="button" (click)="reloadPage()" color="primary" [outline]=true mdbWavesEffect>Restart</button>
             <button mdbBtn type="button" (click)="resetGame()" color="primary" [outline]=true mdbWavesEffect>Reset Game</button>
         </div>
