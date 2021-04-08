@@ -287,8 +287,8 @@ export class Game3Component{
       // console.log("base_diff="+base_diff)
       // padding -
       if(this.stackedBricks==0)
-        last_brick_diff-=100;
-
+        last_brick_diff-=200;
+      console.log("base_diff="+base_diff)
       console.log("last_brick_diff="+last_brick_diff)
 
       // might decrease that diff limit for bonus point in higher difficulties
