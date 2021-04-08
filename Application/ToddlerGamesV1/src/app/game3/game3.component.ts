@@ -41,6 +41,7 @@ export class Game3Component{
   private el:Element;
   public page_x=0;
   public page_y=0;
+  private score_adder = 0;
   public page_w = window.innerWidth;
 
   public game_over:boolean;
@@ -52,6 +53,7 @@ export class Game3Component{
   private range:number;
   public highScore:number;
   private difficulty:number;
+
   
   // bottom-most brick
   public baseBrick_x:number=1;
@@ -67,6 +69,16 @@ export class Game3Component{
   public clap_top = 0;
   public no_left = 0;
   public no_top = 0;
+
+  // gif files
+  public correct_stacked=["../../assets/game3/clap.gif","../../assets/game3/dabbing.gif","../../assets/game3/party.gif","../../assets/game3/perfect.gif"]
+  public incorrect_stacked=["../../assets/game3/no.gif","../../assets/game3/exploding_head.gif","../../assets/game3/facepalm.gif","../../assets/game3/tongue_out.gif","../../assets/game3/thumps_down.gif"]
+  // since index starts with 0
+  private len_correct_stacked = 3
+  private len_incorrect_stacked = 4
+  public cur_correct_stacked=0
+  public cur_incorrect_stacked=0
+  
   
   public bricksList:number[] = [];
   
@@ -120,6 +132,9 @@ export class Game3Component{
     this.bricksList.push(i);
     }
     
+
+    // score adder
+    this.score_adder = 100/this.totalBricks
     
     // randomize base brick
     var range_rem = 1 - this.range;
@@ -277,12 +292,14 @@ export class Game3Component{
       console.log("last_brick_diff="+last_brick_diff)
 
       // might decrease that diff limit for bonus point in higher difficulties
-      if(-1<last_brick_diff && last_brick_diff<5){
+      if(-5<last_brick_diff && last_brick_diff<5){
         this.clap_left = hangingBrick_x;
         this.clap_top = cord_y-100;
-        this.score += 1;
+        this.score += 10;
         
-        // delay
+        this.cur_correct_stacked = Math.round(this.getRandomArbitrary(0,this.len_correct_stacked));
+        console.log(" this.cur_correct_stacked ="+this.cur_correct_stacked);
+      // delay
         (async () => { 
           this.clap_hide = false;
           await this.delay(1000);
@@ -291,9 +308,12 @@ export class Game3Component{
         
       }
       if((this.dif_limit<base_diff && base_diff<this.dif_limit*3) && this.dif_limit>last_brick_diff){
-        this.score+=(1-(last_brick_diff/this.brickWidth));
+        // this.score+=(1-(last_brick_diff/this.brickWidth));
+        this.score+=this.score_adder;
       }
       else{
+        this.cur_incorrect_stacked = Math.round(this.getRandomArbitrary(0,this.len_incorrect_stacked));
+        console.log(" this.cur_incorrect_stacked ="+this.cur_incorrect_stacked);
         this.game_over = false;
         this.no_hide = false;
         this.no_left = hangingBrick_x;

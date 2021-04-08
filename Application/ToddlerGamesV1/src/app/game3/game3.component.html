@@ -16,11 +16,11 @@
         <img [hidden]="this.congrats_hide" class="congrats" src="../../assets/game3/congrats.gif" alt="?">
         <h2 [hidden]="this.congrats_hide" style="color: rgba(31, 153, 0, 0.753);" class="congrats">NEW HIGHSCORE!</h2>   
         <br>
-        <img class="clap" [hidden]="this.clap_hide" style="{{'position: absolute;  left:'+ this.clap_left +'px; top:'+this.clap_top +'px;'}}" src="../../assets/game3/clap.gif" alt="?">
-        <h1 [hidden]="this.clap_hide" style="{{'position: absolute;  left:'+ this.clap_left +'px; top:'+this.clap_top +'px; color: green; font-weight: 100px;'}}">+1</h1>
+        <img class="clap" [hidden]="this.clap_hide" style="{{'position: absolute;  left:'+ this.clap_left +'px; top:'+this.clap_top +'px;'}}" src="{{ correct_stacked[cur_correct_stacked] }}" alt="?">
+        <h1 [hidden]="this.clap_hide" style="{{'position: absolute;  left:'+ this.clap_left +'px; top:'+this.clap_top +'px; color: green; font-weight: 100px;'}}">+10</h1>
         
         <br>
-        <img [hidden]="this.no_hide" style="{{'position: absolute;  left:'+ this.no_left +'px; top:'+ this.no_top +'px;'}}" src="../../assets/game3/no.gif" alt="?"><br>
+        <img [hidden]="this.no_hide" style="{{'position: absolute;  left:'+ this.no_left +'px; top:'+ this.no_top +'px;'}}" src="{{ incorrect_stacked[cur_incorrect_stacked] }}" alt="?"><br>
     </div>
  
     
@@ -44,11 +44,12 @@
         <img class="next_level_button" [hidden]="level_completed" (click)="nextLevel()" src="../../assets/game3/next_level_button.png" alt="?"><br>
     </div>
 
+    <button mdbBtn type="button" style="float: left; margin-top: 3%; margin-left: 2%;" color="primary" [outline]='true' mdbWavesEffect><a routerLink="/app-homepage"> < BACK </a></button>
     <!-- Top elements -->
     <div  class="top_items">
         <h3 class="score">
             Level:{{this.level}} <br> 
-            Score: {{this.score | number}}<br> 
+            Score: {{this.score | number: '1.0-0'}}<br> 
             <!-- DIF = {{this.dif}}<br> 
             last_dif = {{this.last_dif}}<br>
             base_x = {{this.baseBrick_x}}<br>
@@ -67,8 +68,7 @@
             <button mdbBtn type="button" (click)="resetGame()" color="primary" [outline]=true mdbWavesEffect>Reset Game</button>
         </div>
         <div class="col-sm">
-            <button mdbBtn type="button" color="primary" [outline]='true' mdbWavesEffect><a routerLink="/app-homepage">BACK</a></button>
-            <button mdbBtn type="button" (click)="openHelp()" color="primary" [outline]=true mdbWavesEffect>HELP</button>
+            <button mdbBtn type="button"  (click)="openHelp()" color="primary" [outline]=true mdbWavesEffect>HELP</button>
         </div>
         <br>
         <div *ngFor="let index of bricksList" >
