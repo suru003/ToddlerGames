@@ -9,7 +9,7 @@ export function followAnimation(rot: number): AnimationMetadata {
 export function brickSlideAnimation(cord: number, difficulty:number, brickNumber:number): AnimationMetadata {
 
     while(true){
-      return query('.brick'+brickNumber, animate(1000*(3.5-difficulty)+"ms",
+      return query('.brick'+brickNumber, animate(1700*(4-difficulty)+"ms",
         style({ transform: 'translateX(' + cord + 'px)' },)
     ));
   }

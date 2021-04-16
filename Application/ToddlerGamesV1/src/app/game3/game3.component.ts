@@ -85,7 +85,7 @@ export class Game3Component{
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
     // console.log("event "+event.keyCode);
-    if(event.keyCode==32){
+    if(event.keyCode==32 || event.keyCode==40 || event.keyCode==13){
       // console.log(this.validGame+" and  "+this.level_completed);
       this.releaseBrick(this.el);
     }
